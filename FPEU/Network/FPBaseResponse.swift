@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct FPBaseResponse: Codable {
-    var status: Int?
-    var code: String? 
+struct FPBaseResponse: Decodable {
+    var httpStatus: Int?
+    var code: Int?
+    var msg: String?
 }

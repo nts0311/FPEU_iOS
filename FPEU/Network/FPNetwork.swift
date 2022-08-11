@@ -17,7 +17,7 @@ public class FPNetwork {
     private static let timeoutErrorMessage = "Request timeout! Please try again later."
     
     private static let manager = Alamofire.Session.default
-    private static let queue = DispatchQueue(label: "API")
+    private static let queue = DispatchQueue(label: "API", attributes: .concurrent)
     
     public static func makeRequest(
         method: HTTPMethod,
@@ -37,39 +37,32 @@ public class FPNetwork {
         manager.session.configuration.timeoutIntervalForRequest = 30
         manager.request(url, method: method, parameters: params, encoding: encoding, headers: headers).validate(statusCode: 200...499).responseData(queue:queue, completionHandler: { dataResponse in
             if isDebug {
-                print("\n===> Request GET URL : \(dataResponse.request?.url?.absoluteString ?? "")")
+                print("\n===> Request URL : \(dataResponse.request?.url?.absoluteString ?? "")")
                 print(params)
                 print("Header = ", dataResponse.request?.allHTTPHeaderFields)
             }
             switch dataResponse.result {
-
                 case .success:
                     if let data = dataResponse.data {
                         if isDebug {
                             debugData(data)
                         }
-                        DispatchQueue.main.async {
-                            if !isSessionExpired(data) {
-                                success(data)
-                            } else {
-                                NotificationCenter.default.post(name: .sessionExpired, object: nil, userInfo: nil)
-                            }
+                        
+                        if !isSessionExpired(data) {
+                            success(data)
+                        } else {
+                            NotificationCenter.default.post(name: .sessionExpired, object: nil, userInfo: nil)
                         }
+                
                     } else {
-                        DispatchQueue.main.async {
-                            failure(nil, networkErrorMessage)
-                        }
+                        failure(nil, networkErrorMessage)
                     }
 
                 case .failure(let error):
                     if error._code == NSURLErrorTimedOut {
-                        DispatchQueue.main.async {
-                            timeout(timeoutErrorMessage)
-                        }
+                        timeout(timeoutErrorMessage)
                     } else {
-                        DispatchQueue.main.async {
-                            failure(error._code, networkErrorMessage)
-                        }
+                        failure(error._code, networkErrorMessage)
                     }
             }
         })
@@ -130,11 +123,11 @@ extension FPNetwork {
         return self.makeRequestSingle(method: method, otherUrl: otherUrl, endpoint: endpoint, params: params)
             .map {data in
                 do {
-                    return try JSONDecoder().decode(T.self, from: data)
+                    return try JSONDecoder().decode(T.self, from: data) as T
                 } catch {
                    return nil
                 }
-            }
+            }.observe(on: MainScheduler.instance)
     }
     
     public static func singleGet<T: Decodable>(
@@ -171,7 +164,7 @@ extension FPNetwork {
     private static func isSessionExpired(_ data: Data) -> Bool {
         do {
             let result = try JSONDecoder().decode(FPBaseResponse.self, from: data)
-            if let status = result.status, status == 401 {
+            if let status = result.httpStatus, status == 401 {
                 return true
             }
             return false

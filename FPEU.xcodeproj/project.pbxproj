@@ -24,6 +24,7 @@
 		E77952EE289FDED6003771BE /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77952ED289FDED6003771BE /* UIViewController+.swift */; };
 		E77952F0289FDF51003771BE /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77952EF289FDF51003771BE /* UITableView+.swift */; };
 		E77952F2289FDFD2003771BE /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77952F1289FDFD2003771BE /* UIView+.swift */; };
+		E79D13F828A2A35800456710 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D13F728A2A35800456710 /* LoginResponse.swift */; };
 		F64192AFF4C2C4AA7DC42E70 /* Pods_FPEU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C2D0B5E0DA5ED4684FF77 /* Pods_FPEU.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		E77952ED289FDED6003771BE /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		E77952EF289FDF51003771BE /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		E77952F1289FDFD2003771BE /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		E79D13F728A2A35800456710 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E76CF4D428A3F6B500F04ABD /* Stomp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stomp;
+			sourceTree = "<group>";
+		};
 		E77952C2289FC906003771BE = {
 			isa = PBXGroup;
 			children = (
@@ -141,9 +150,11 @@
 		E77952CD289FC906003771BE /* FPEU */ = {
 			isa = PBXGroup;
 			children = (
+				E76CF4D428A3F6B500F04ABD /* Stomp */,
 				E750DA6728A1689000B3E345 /* Utils */,
 				E750DA5028A1516700B3E345 /* Network */,
 				E77952EC289FDD83003771BE /* Extensions */,
+				E79D13F428A2A32300456710 /* Features */,
 				E77952CE289FC906003771BE /* AppDelegate.swift */,
 				E77952D0289FC906003771BE /* SceneDelegate.swift */,
 				E77952D2289FC906003771BE /* ViewController.swift */,
@@ -162,6 +173,30 @@
 				E750DA6528A1683E00B3E345 /* UIKit */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E79D13F428A2A32300456710 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				E79D13F528A2A32F00456710 /* Auth */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		E79D13F528A2A32F00456710 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E79D13F628A2A33C00456710 /* Model */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		E79D13F628A2A33C00456710 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E79D13F728A2A35800456710 /* LoginResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +328,7 @@
 				E750DA6F28A16CFA00B3E345 /* ServiceUrl.swift in Sources */,
 				E77952F0289FDF51003771BE /* UITableView+.swift in Sources */,
 				E77952D1289FC906003771BE /* SceneDelegate.swift in Sources */,
+				E79D13F828A2A35800456710 /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
