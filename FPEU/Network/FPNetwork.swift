@@ -13,7 +13,7 @@ public class FPNetwork {
     
     private static let isDebug = true
     
-    private static let networkErrorMessage = "Could not connect to server! Please try again later."
+    //public static let networkErrorMessage = "Có lỗi xảy ra, vui lòng thử lại sau."
     private static let timeoutErrorMessage = "Request timeout! Please try again later."
     
     private static let manager = Alamofire.Session.default
@@ -23,7 +23,7 @@ public class FPNetwork {
         method: HTTPMethod,
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any],
+        params: [String: Any]?,
         success: @escaping (_ data: Data) -> Void,
         failure: @escaping (_ code: Int?, _ message: String) -> Void,
         timeout: @escaping (_ message: String) -> Void
@@ -71,7 +71,7 @@ public class FPNetwork {
     public static func get(
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any],
+        params: [String: Any]?,
         success: @escaping (_ data: Data) -> Void,
         failure: @escaping (_ code: Int?, _ message: String) -> Void,
         timeout: @escaping (_ message: String) -> Void
@@ -82,7 +82,7 @@ public class FPNetwork {
     public static func post(
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any],
+        params: [String: Any]?,
         success: @escaping (_ data: Data) -> Void,
         failure: @escaping (_ code: Int?, _ message: String) -> Void,
         timeout: @escaping (_ message: String) -> Void
@@ -97,16 +97,16 @@ extension FPNetwork {
         method: HTTPMethod,
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any]
+        params: [String: Any]?
     ) -> Single<Data> {
         return Single.create {single in
             
             self.makeRequest(method:method, otherUrl: otherUrl, endpoint: endpoint, params: params) {data in
                 single(.success(data))
             } failure:  { code, message in
-                single(.failure(NetworkError.apiFailed(statusCode: code, message: message)))
+                single(.success(Data()))
             } timeout: { message in
-                single(.failure(NetworkError.timeout(message: message)))
+                single(.success(Data()))
             }
             
             return Disposables.create()
@@ -118,7 +118,7 @@ extension FPNetwork {
         method: HTTPMethod,
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any]
+        params: [String: Any]?
     ) -> Single<T?> {
         return self.makeRequestSingle(method: method, otherUrl: otherUrl, endpoint: endpoint, params: params)
             .map {data in
@@ -133,7 +133,7 @@ extension FPNetwork {
     public static func singleGet<T: Decodable>(
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any]
+        params: [String: Any]?
     ) -> Single<T?> {
         return self.makeRequestSingle(method: .get, endpoint: endpoint, params: params)
     }
@@ -141,9 +141,25 @@ extension FPNetwork {
     public static func singlePost<T: Decodable>(
         otherUrl: String? = nil,
         endpoint: String,
-        params: [String: Any]
+        params: [String: Any]?
     ) -> Single<T?> {
         return self.makeRequestSingle(method: .post, endpoint: endpoint, params: params)
+    }
+    
+    public static func singlePost<T: Decodable>(_ T: T.Type,
+        otherUrl: String? = nil,
+        endpoint: String,
+        params: [String: Any]?
+    ) -> Single<T?> {
+        return self.makeRequestSingle(method: .post, endpoint: endpoint, params: params)
+    }
+    
+    public static func singleGet<T: Decodable>(_ T: T.Type,
+        otherUrl: String? = nil,
+        endpoint: String,
+        params: [String: Any]?
+    ) -> Single<T?> {
+        return self.makeRequestSingle(method: .get, endpoint: endpoint, params: params)
     }
 }
 

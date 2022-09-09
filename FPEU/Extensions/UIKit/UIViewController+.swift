@@ -15,4 +15,16 @@ extension UIViewController {
         }
         return initFromNib(self)
     }
+    
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UIViewController {
+    func showLoginScreen() {
+        let vc: LoginViewController = UIStoryboard.authStoryboard.instantiateViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
 }

@@ -13,6 +13,7 @@ public final class UserDataDefaults {
     private let userStandard = UserDefaults.standard
     
     private let jwtTokenKey = "jwtTokenKey"
+    private let isLoggedInKey = "isLoggedInKey"
     
     public var jwtToken: String? {
         get {
@@ -21,6 +22,17 @@ public final class UserDataDefaults {
         
         set(token) {
             userStandard.set(token, forKey: jwtTokenKey)
+            userStandard.synchronize()
+        }
+    }
+    
+    public var isLoggedIn: Bool {
+        get {
+            return (userStandard.object(forKey: isLoggedInKey) as? Bool) ?? false
+        }
+        
+        set(isLoggedIn) {
+            userStandard.set(isLoggedIn, forKey: isLoggedInKey)
             userStandard.synchronize()
         }
     }

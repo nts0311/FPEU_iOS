@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Cho phép lấy vị trí để biết chính xác vị trí của bạn</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Cho phép lấy vị trí để biết chính xác vị trí của bạn</string>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Cho phép lấy vị trí để biết chính xác vị trí của bạn</string>
+    
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,5 +30,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 </dict>
 </plist>

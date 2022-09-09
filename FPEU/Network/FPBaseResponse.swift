@@ -9,6 +9,6 @@ import Foundation
 
 struct FPBaseResponse: Decodable {
     var httpStatus: Int?
-    var code: Int?
+    var code: String?
     var msg: String?
 }
