@@ -25,6 +25,10 @@ class FPAddress: Codable {
         self.lat = placemark.location?.coordinate.latitude
         self.long = placemark.location?.coordinate.longitude
     }
+    
+    func toString() -> String {
+        return "\(detail ?? ""), \(ward ?? ""), \(city ?? "")"
+    }
 }
 
 

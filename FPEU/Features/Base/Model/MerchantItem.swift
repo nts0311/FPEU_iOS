@@ -12,4 +12,9 @@ struct MerchantItem: Codable {
     var name: String?
     var imageUrl: String?
     var address: FPAddress?
+    
+    var subTitle: String?
+    var distance: Double?
+    var numStar: Double?
+    var numOrder: Int?
 }

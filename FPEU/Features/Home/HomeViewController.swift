@@ -12,120 +12,150 @@ import StompClientLib
 import GoogleMaps
 
 class HomeViewController: FPViewController {
+
     
-    var socketClient = StompClientLib()
-    var jwt = ""
-    let username = "son1"
-    var count = 0
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var labelAddress: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     let viewModel = HomeViewModel()
+    
+    //DATA
+    private var categories = [ProductCategory]()
+    private var homeSections = [HomeSection]()
+    private var nearbyRestaurants = [MerchantItem]()
+    private var isLoading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-//        FPNetwork.singlePost(endpoint: "/auth/login", params: [
-//            "username": username,
-//            "password": "123456"
-//        ]).subscribe() {(response: LoginResponse?) in
-//            self.jwt = response?.jwtToken ?? ""
-//            let url = NSURL(string: ServiceUrl.wssUrl)!
-//            self.socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL), delegate: self, connectionHeaders: ["Authorization" : "Bearer \(self.jwt)"])
-//
-//        } onFailure: { _ in
-//
+//        if UserDataDefaults.shared.isLoggedIn {
+//            viewModel.inLoadHomeInfo.accept(())
+//        } else {
+//           showLoginScreen()
 //        }
         
-        
-        // Do any additional setup after loading the view.
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
-//        let camera = GMSCameraPosition.camera(withLatitude: 21.029057, longitude: 105.788010, zoom: 15)
-//        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
-//        self.view.addSubview(mapView)
-//
-//        // Creates a marker in the center of the map.
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: 21.029057, longitude: 105.788010)
-//        marker.title = "Sydney"
-//        marker.snippet = "Australia"
-//        let icon = UIImage(named: "ned")
-//        marker.icon = icon
-//        marker.map = mapView
-        
-        NotificationCenter.default.rx.notification(.sessionExpired)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {_ in
-                self.showLoginScreen()
-            })
-            .disposed(by: disposeBag)
+        bindViewModel()
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
         
         if UserDataDefaults.shared.isLoggedIn {
             viewModel.inLoadHomeInfo.accept(())
         } else {
            showLoginScreen()
         }
-        
-        
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     private func bindViewModel() {
-        viewModel.outHomeInfo.asObservable().subscribe().disposed(by: disposeBag)
+        viewModel.outHomeInfo.asObservable()
+            .subscribe(onNext: {(productCategories, homeSections, nearbyRestaurants) in
+                self.categories = productCategories
+                self.homeSections = homeSections
+                self.nearbyRestaurants = nearbyRestaurants
+                self.reloadData()
+            }).disposed(by: disposeBag)
     }
-
-    @IBAction func sendBtnTapped(_ sender: Any) {
-        socketClient.sendMessage(message: "{\"username\":\"son\", \"message\":\"Hello samsung\(count)\"}", toDestination: "/app/hello", withHeaders: ["content-type":"application/json;charset=UTF-8"], withReceipt: nil)
-        count+=1
+    
+    private func setupViews() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cell: ProductCategoryCollectionCell.self)
+        tableView.register(cell: HomeSectionCell.self)
+        tableView.register(cell: MerchantItemTableViewCell.self)
+    }
+    
+    private func reloadData() {
+        labelAddress.text = UserRepo.shared.currentUserAddress?.toString()
+        tableView.reloadData()
     }
 }
 
-class HelloMsg: NSObject {
-    var name: String = ""
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    init(name: String) {
-        self.name = name
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.isLoading ? 1 : 2 + homeSections.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch HomeTableViewSection.init(rawValue: section) {
+        case .banner:
+            return 0
+        case .categories:
+            return 1
+            
+        case .homeSection:
+            return homeSections.count
+            
+        case .nearbyRestaurant:
+            return nearbyRestaurants.count
+            
+        default:
+            return 0
+        }
+    }
+   
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch HomeTableViewSection.init(rawValue: indexPath.section) {
+        case .banner:
+            return UITableViewCell()
+        case .categories:
+            let categoriesCell: ProductCategoryCollectionCell = tableView.dequeueReusableCell(at: indexPath)
+            categoriesCell.listCategory = categories
+            categoriesCell.didSelectCategory = {category in
+                
+            }
+            return categoriesCell
+            
+        case .homeSection:
+            let cell: HomeSectionCell = tableView.dequeueReusableCell(at: indexPath)
+            cell.homeSection = homeSections[indexPath.row]
+            cell.diSelectMerchant = {restaurant in
+                
+            }
+            return cell
+            
+        case .nearbyRestaurant:
+            let cell: MerchantItemTableViewCell = tableView.dequeueReusableCell(at: indexPath)
+            cell.merchantItem = nearbyRestaurants[indexPath.row]
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (self.isLoading) {
+            return 650
+        }
+        
+        switch HomeTableViewSection.init(rawValue: indexPath.section) {
+        case .categories:
+            return ProductCategoryCollectionCell.calCellHeight(numOfCategories: self.categories.count)
+            
+        case .homeSection:
+            return UITableView.automaticDimension
+            
+        case .nearbyRestaurant:
+            return UITableView.automaticDimension
+            
+        default:
+            return 0
+        }
     }
 }
 
-extension HomeViewController: StompClientLibDelegate {
-    func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-        print("Destination : \(destination)")
-        print("JSON Body : \(String(describing: jsonBody))")
-        print("String Body : \(stringBody ?? "nil")")
-        
-        label.text = "Destination : \(destination)\nJSON Body : \(String(describing: jsonBody))\nString Body : \(stringBody ?? "nil")"
-        
-        
-    }
-    
-    func stompClientDidDisconnect(client: StompClientLib!) {
-        
-    }
-    
-    func stompClientDidConnect(client: StompClientLib!) {
-        print("Socket is connected")
-        socketClient.subscribe(destination: "/users/queue/messages")
-    }
-    
-    func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
-        
-    }
-    
-    func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
-        print("Error Send : \(String(describing: message))")
-        
-    }
-    
-    
-    func serverDidSendPing() {
-        print("Server ping")
-    }
-    
+enum HomeTableViewSection: Int {
+    case banner = 0
+    case categories = 1
+    case homeSection = 2
+    case nearbyRestaurant = 3
 }
-

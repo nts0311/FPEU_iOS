@@ -8,17 +8,31 @@
 import UIKit
 import GoogleMaps
 import IQKeyboardManagerSwift
+import RxSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let globalScheduler = ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global())
 
-
+    private let disposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyDDBPyCwVvmdpEgm6XHS-9nCjkHpXfGqwI")
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        NotificationCenter.default.rx.notification(.sessionExpired)
+            .debounce(RxTimeInterval.milliseconds(200), scheduler: globalScheduler)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {_ in
+                UserDataDefaults.shared.jwtToken = nil
+                UserDataDefaults.shared.isLoggedIn = false
+                UIViewController.topMostViewController()?.showLoginScreen()
+            })
+            .disposed(by: disposeBag)
+        
         return true
     }
 

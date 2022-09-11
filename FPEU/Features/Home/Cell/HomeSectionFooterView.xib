@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U6b-Vx-4bR">
+            <rect key="frame" x="0.0" y="0.0" width="170" height="278"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-h5-jVK">
+                    <rect key="frame" x="8" y="8" width="154" height="160"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_right_arrow_2" translatesAutoresizingMaskIntoConstraints="NO" id="1E5-OB-ihO">
+                            <rect key="frame" x="62" y="48" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="FuL-O4-8lI"/>
+                                <constraint firstAttribute="width" secondItem="1E5-OB-ihO" secondAttribute="height" multiplier="1:1" id="M56-ZC-q5o"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xem tất luôn nhaaa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-Wb-sK5">
+                            <rect key="frame" x="24.5" y="86" width="105" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="105" id="Mfq-Zx-vau"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                            <color key="textColor" red="0.80392156859999997" green="0.1058823529" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.80392156859999997" green="0.1058823529" blue="0.12941176469999999" alpha="0.10477028145695365" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="GWa-Wb-sK5" firstAttribute="top" secondItem="1E5-OB-ihO" secondAttribute="bottom" constant="8" id="243-cr-mSo"/>
+                        <constraint firstItem="1E5-OB-ihO" firstAttribute="top" secondItem="S6d-h5-jVK" secondAttribute="top" constant="48" id="2AL-eX-AWo"/>
+                        <constraint firstAttribute="bottom" secondItem="GWa-Wb-sK5" secondAttribute="bottom" constant="24" id="JQI-zW-7kG"/>
+                        <constraint firstItem="GWa-Wb-sK5" firstAttribute="centerX" secondItem="S6d-h5-jVK" secondAttribute="centerX" id="b75-y1-9an"/>
+                        <constraint firstItem="1E5-OB-ihO" firstAttribute="centerX" secondItem="S6d-h5-jVK" secondAttribute="centerX" id="fRA-nU-jRW"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="S6d-h5-jVK" secondAttribute="bottom" constant="110" id="6aE-vd-daj"/>
+                <constraint firstItem="S6d-h5-jVK" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="8" id="INv-b4-Wm6"/>
+                <constraint firstAttribute="trailing" secondItem="S6d-h5-jVK" secondAttribute="trailing" constant="8" id="Myc-tf-XMU"/>
+                <constraint firstItem="S6d-h5-jVK" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="8" id="vsT-hD-tdd"/>
+            </constraints>
+            <point key="canvasLocation" x="28.985507246376812" y="220.98214285714286"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ic_right_arrow_2" width="128" height="128"/>
+    </resources>
+</document>

@@ -13,4 +13,8 @@ class FPViewModel {
     public let disposeBag = DisposeBag()
     
     public let errorDescription = BehaviorSubject<String>(value: "")
+    
+    init() {
+        
+    }
 }

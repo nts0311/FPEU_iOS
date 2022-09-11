@@ -34,7 +34,7 @@ class HomeViewModel: FPViewModel {
                     .catchErrorJustComplete()
             }
             .compactMap {
-                return $0?.code == "0" ? $0?.categories : nil
+                $0?.categories
             }
         
         let loadSections = inLoadHomeInfo
@@ -43,10 +43,9 @@ class HomeViewModel: FPViewModel {
                     .catchErrorJustComplete()
             }
             .compactMap {
-                return $0?.code == "0" ? $0?.sections : nil
+                $0?.sections
             }
             
-        
         let nearbyRestaurant = inLoadHomeInfo
             .flatMapLatest {
                 self.locationManager.rx.placemark.take(1)
@@ -60,14 +59,12 @@ class HomeViewModel: FPViewModel {
             .do(onNext: {response in
                 self.saveUserCurrentLocation(response)
             })
-            .compactMap {
-                return $0?.code == "0" ? $0?.currentLocation : nil
-            }
+            .compactMap { $0?.currentLocation }
             .flatMapLatest { address in
                 FPNetwork.singlePost(GetNearbyMerchantResponse.self, endpoint: Endpoint.getNearbyMerchant, params: ["lat" : address.lat, "long": address.long])
                     .catchErrorJustComplete()
             }
-            .compactMap { $0?.nearbyRestaurant }
+            .compactMap { $0?.merchants }
         
         
         Observable.combineLatest(loadCategories, loadSections, nearbyRestaurant)

@@ -12,5 +12,5 @@ struct GetNearbyMerchantResponse: Decodable {
     var code: String?
     var msg: String?
     
-    var nearbyRestaurant: [MerchantItem] = []
+    var merchants: [MerchantItem] = []
 }
