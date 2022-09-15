@@ -17,4 +17,8 @@ struct MerchantItem: Codable {
     var distance: Double?
     var numStar: Double?
     var numOrder: Int?
+    
+    func getDistance() -> String {
+        return distance?.prettyDistance ?? ""
+    }
 }

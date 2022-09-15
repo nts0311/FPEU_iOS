@@ -104,10 +104,11 @@ extension FPNetwork {
             self.makeRequest(method:method, otherUrl: otherUrl, endpoint: endpoint, params: params) {data in
                 single(.success(data))
             } failure:  { code, message in
-                single(.success(Data()))
+                single(.failure(NetworkError.apiFailed(statusCode: code, message: message)))
             } timeout: { message in
-                single(.success(Data()))
+                single(.failure(NetworkError.timeout(message: message)))
             }
+            
             
             return Disposables.create()
         }

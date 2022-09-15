@@ -15,7 +15,11 @@ class Endpoint {
     public static let getCategories = "/shared/productCategory/list"
     public static let getHomeSection = "/enduser/home/section"
     public static let getNearbyMerchant = "/enduser/home/nearby-merchant"
+    public static let getHomeBanner = "/enduser/home/banner"
     
     public static let getUserCurrentAddress = "/enduser/info/current-address"
+    
+    public static let getMenus = "/merchant/tag/list"
+    public static let getProducts = "/merchant/product/list"
 }
 

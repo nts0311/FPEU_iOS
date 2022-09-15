@@ -15,7 +15,7 @@ import RxCoreLocation
 class HomeViewModel: FPViewModel {
     let inLoadHomeInfo = PublishRelay<Void>()
     
-    let outHomeInfo = PublishRelay<([ProductCategory], [HomeSection], [MerchantItem])>()
+    let outHomeInfo = PublishRelay<([ProductCategory], [HomeSection], [MerchantItem], [HomeBanner])>()
     
     let locationManager = CLLocationManager()
     
@@ -66,8 +66,15 @@ class HomeViewModel: FPViewModel {
             }
             .compactMap { $0?.merchants }
         
+        let homeBanner = inLoadHomeInfo
+            .flatMapLatest {
+                FPNetwork.singleGet(GetHomeBannerResponse.self, endpoint: Endpoint.getHomeBanner, params: nil)
+                    .catchErrorJustComplete()
+            }
+            .compactMap { $0?.banners }
         
-        Observable.combineLatest(loadCategories, loadSections, nearbyRestaurant)
+        
+        Observable.combineLatest(loadCategories, loadSections, nearbyRestaurant, homeBanner)
             .bind(to: outHomeInfo)
             .disposed(by: disposeBag)
             

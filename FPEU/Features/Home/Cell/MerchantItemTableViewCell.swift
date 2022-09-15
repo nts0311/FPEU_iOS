@@ -24,6 +24,7 @@ class MerchantItemTableViewCell: UITableViewCell {
     private func initData() {
         merchantImageView.sd_setImage(with: URL(string: merchantItem.imageUrl ?? ""), placeholderImage: UIImage(named: "placeholder_restaurant"))
         labelName.text = merchantItem.name ?? ""
+        subTitle.text = merchantItem.subTitle
         
         if let starNum = merchantItem.numStar, let numOrder = merchantItem.numOrder {
             labelStar.text = "\(starNum)"

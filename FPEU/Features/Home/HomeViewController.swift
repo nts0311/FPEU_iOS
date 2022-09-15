@@ -20,6 +20,7 @@ class HomeViewController: FPViewController {
     let viewModel = HomeViewModel()
     
     //DATA
+    private var banners = [HomeBanner]()
     private var categories = [ProductCategory]()
     private var homeSections = [HomeSection]()
     private var nearbyRestaurants = [MerchantItem]()
@@ -28,19 +29,13 @@ class HomeViewController: FPViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if UserDataDefaults.shared.isLoggedIn {
-//            viewModel.inLoadHomeInfo.accept(())
-//        } else {
-//           showLoginScreen()
-//        }
-        
         bindViewModel()
         setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
         
         if UserDataDefaults.shared.isLoggedIn {
             viewModel.inLoadHomeInfo.accept(())
@@ -51,12 +46,13 @@ class HomeViewController: FPViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
     
     private func bindViewModel() {
         viewModel.outHomeInfo.asObservable()
-            .subscribe(onNext: {(productCategories, homeSections, nearbyRestaurants) in
+            .subscribe(onNext: {(productCategories, homeSections, nearbyRestaurants, banners) in
+                self.banners = banners
                 self.categories = productCategories
                 self.homeSections = homeSections
                 self.nearbyRestaurants = nearbyRestaurants
@@ -65,11 +61,18 @@ class HomeViewController: FPViewController {
     }
     
     private func setupViews() {
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        tableView.tableFooterView = nil
+        tableView.tableHeaderView = nil
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cell: ProductCategoryCollectionCell.self)
         tableView.register(cell: HomeSectionCell.self)
         tableView.register(cell: MerchantItemTableViewCell.self)
+        tableView.register(cell: HomeBannerTableViewCell.self)
+        tableView.register(TitleHeaderTableCell.nib, forHeaderFooterViewReuseIdentifier: TitleHeaderTableCell.reuseIdentifier)
     }
     
     private func reloadData() {
@@ -87,7 +90,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch HomeTableViewSection.init(rawValue: section) {
         case .banner:
-            return 0
+            return 1
         case .categories:
             return 1
             
@@ -105,7 +108,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch HomeTableViewSection.init(rawValue: indexPath.section) {
         case .banner:
-            return UITableViewCell()
+            let cell: HomeBannerTableViewCell = tableView.dequeueReusableCell(at: indexPath)
+            cell.listBanner = banners
+            return cell
         case .categories:
             let categoriesCell: ProductCategoryCollectionCell = tableView.dequeueReusableCell(at: indexPath)
             categoriesCell.listCategory = categories
@@ -118,7 +123,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell: HomeSectionCell = tableView.dequeueReusableCell(at: indexPath)
             cell.homeSection = homeSections[indexPath.row]
             cell.diSelectMerchant = {restaurant in
-                
+                let vc = MerchantViewController.initFromNib()
+                vc.merchantItem = restaurant
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
             
@@ -141,9 +148,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .categories:
             return ProductCategoryCollectionCell.calCellHeight(numOfCategories: self.categories.count)
             
+        case .banner:
+            return UITableView.automaticDimension
         case .homeSection:
             return UITableView.automaticDimension
-            
         case .nearbyRestaurant:
             return UITableView.automaticDimension
             
@@ -151,6 +159,46 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 0
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (self.isLoading) {
+            return CGFloat.leastNonzeroMagnitude
+        }
+        
+        switch HomeTableViewSection.init(rawValue: section) {
+            
+        case .nearbyRestaurant:
+            return UITableView.automaticDimension
+            
+        default:
+            return CGFloat.leastNonzeroMagnitude
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (self.isLoading) {
+            return nil
+        }
+        
+        switch HomeTableViewSection.init(rawValue: section) {
+        case .nearbyRestaurant:
+            let header = tableView.dequeueReusableHeaderFooter(ofType: TitleHeaderTableCell.self)
+                header.setText("Gần đây có gì nhon?")
+                return header
+            
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
 }
 
 enum HomeTableViewSection: Int {
