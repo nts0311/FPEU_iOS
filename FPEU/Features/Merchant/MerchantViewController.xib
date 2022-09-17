@@ -52,11 +52,11 @@
                         <constraint firstAttribute="trailing" secondItem="Kia-4t-H9U" secondAttribute="trailing" id="g4T-p9-D2X"/>
                     </constraints>
                 </view>
-                <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wjn-6F-CpQ">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wjn-6F-CpQ">
+                    <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tto-tP-KKD">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tto-tP-KKD" userLabel="header">
                     <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="59A-WJ-PMU">
@@ -157,7 +157,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sgP-Dc-Bpy" secondAttribute="trailing" id="yBP-Dr-jg5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wjn-6F-CpQ" secondAttribute="trailing" id="you-Gx-xih"/>
                 <constraint firstItem="sgP-Dc-Bpy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zgs-dz-fnm"/>
-                <constraint firstItem="wjn-6F-CpQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zrf-EE-eyG"/>
+                <constraint firstItem="wjn-6F-CpQ" firstAttribute="top" secondItem="tto-tP-KKD" secondAttribute="bottom" id="zrf-EE-eyG"/>
             </constraints>
             <point key="canvasLocation" x="139" y="145"/>
         </view>

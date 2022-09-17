@@ -8,6 +8,8 @@
 import UIKit
 import TagListView
 
+fileprivate let INFO_SECTION = 0
+
 class MerchantViewController: FPViewController {
 
     @IBOutlet weak var headerView: UIView!
@@ -43,11 +45,6 @@ class MerchantViewController: FPViewController {
         super.viewWillLayoutSubviews()
         self.navigationController?.isNavigationBarHidden = true
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -60,6 +57,7 @@ class MerchantViewController: FPViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        tableView.sectionFooterHeight = 0
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cell: MerchantInfoCell.self)
@@ -106,9 +104,9 @@ extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.section == 0) {
-            return 436
-        }
+//        if (indexPath.section == 0) {
+//            return 436
+//        }
         return UITableView.automaticDimension
     }
     
@@ -185,7 +183,17 @@ extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == INFO_SECTION) {
+            return
+        }
+        
+        let vc = ProductDetailViewController.initFromNib()
+        vc.product = viewModel.getProductAt(indexPath: indexPath)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
 
 enum MerchantTableViewSection: Int {

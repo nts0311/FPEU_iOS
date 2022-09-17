@@ -22,11 +22,19 @@ struct MerchantProduct: Decodable {
 
 struct ProductAttribute: Decodable {
     var id: Int?
-    var isMultiple: Bool?
-    var isRequired: Bool?
+    var multiple: Bool?
+    var required: Bool?
     var productId: Int?
     var name: String?
     var options: [ProductAttributeOption]
+    
+    var isRequired: Bool {
+        get { return required ?? false }
+    }
+    
+    var isMultiple: Bool {
+        get { return multiple ?? false }
+    }
 }
 
 struct ProductAttributeOption: Decodable {

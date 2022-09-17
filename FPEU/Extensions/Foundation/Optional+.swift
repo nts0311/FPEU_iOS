@@ -18,6 +18,9 @@ extension Swift.Optional {
       if self is Int, let obj = self as? Int {
         return String(obj)
       }
+        if self is Double, let obj = self as? Double {
+          return String(obj)
+        }
       return ""
     }
 }

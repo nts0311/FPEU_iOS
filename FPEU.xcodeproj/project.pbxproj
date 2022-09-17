@@ -65,7 +65,18 @@
 		E786B5E728CA433E00EE1849 /* UIEncodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786B5E628CA433E00EE1849 /* UIEncodable+.swift */; };
 		E786B5E928CA4C6B00EE1849 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786B5E828CA4C6B00EE1849 /* Rx+.swift */; };
 		E786B5EB28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786B5EA28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift */; };
+		E78EF7A628D562FC00F50053 /* ProductInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7A428D562FC00F50053 /* ProductInfoCell.swift */; };
+		E78EF7A728D562FC00F50053 /* ProductInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EF7A528D562FC00F50053 /* ProductInfoCell.xib */; };
+		E78EF7C728D5D54200F50053 /* ProductAttributeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7C628D5D54200F50053 /* ProductAttributeHeader.swift */; };
+		E78EF7C928D5D55600F50053 /* ProductAttributeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EF7C828D5D55600F50053 /* ProductAttributeHeader.xib */; };
+		E78EF7CB28D5EA8C00F50053 /* UserCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7CA28D5EA8C00F50053 /* UserCart.swift */; };
+		E78EF7CE28D60F7900F50053 /* ProductOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7CC28D60F7900F50053 /* ProductOptionCell.swift */; };
+		E78EF7CF28D60F7900F50053 /* ProductOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EF7CD28D60F7900F50053 /* ProductOptionCell.xib */; };
+		E78EF7D128D6365500F50053 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7D028D6365500F50053 /* UIColor+.swift */; };
 		E79D13F828A2A35800456710 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D13F728A2A35800456710 /* LoginResponse.swift */; };
+		E7B02DAC28D4DF3000CE8D30 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */; };
+		E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */; };
+		E7B02DAF28D4E2CE00CE8D30 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */; };
 		E7BF448428C503410025D5CE /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7BF448328C503410025D5CE /* Auth.storyboard */; };
 		E7BF448628C503980025D5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF448528C503980025D5CE /* LoginViewController.swift */; };
 		E7BF448828C503A80025D5CE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF448728C503A80025D5CE /* LoginViewModel.swift */; };
@@ -151,7 +162,18 @@
 		E786B5E628CA433E00EE1849 /* UIEncodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEncodable+.swift"; sourceTree = "<group>"; };
 		E786B5E828CA4C6B00EE1849 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
 		E786B5EA28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserCurrentLocationResponse.swift; sourceTree = "<group>"; };
+		E78EF7A428D562FC00F50053 /* ProductInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCell.swift; sourceTree = "<group>"; };
+		E78EF7A528D562FC00F50053 /* ProductInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductInfoCell.xib; sourceTree = "<group>"; };
+		E78EF7C628D5D54200F50053 /* ProductAttributeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAttributeHeader.swift; sourceTree = "<group>"; };
+		E78EF7C828D5D55600F50053 /* ProductAttributeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductAttributeHeader.xib; sourceTree = "<group>"; };
+		E78EF7CA28D5EA8C00F50053 /* UserCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCart.swift; sourceTree = "<group>"; };
+		E78EF7CC28D60F7900F50053 /* ProductOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOptionCell.swift; sourceTree = "<group>"; };
+		E78EF7CD28D60F7900F50053 /* ProductOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductOptionCell.xib; sourceTree = "<group>"; };
+		E78EF7D028D6365500F50053 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E79D13F728A2A35800456710 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
+		E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		E7BF448328C503410025D5CE /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		E7BF448528C503980025D5CE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E7BF448728C503A80025D5CE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -260,6 +282,7 @@
 		E750DA6528A1683E00B3E345 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E78EF7D028D6365500F50053 /* UIColor+.swift */,
 				E7BF448A28C50B140025D5CE /* UIStoryboard+.swift */,
 				E77952ED289FDED6003771BE /* UIViewController+.swift */,
 				E77952EF289FDF51003771BE /* UITableView+.swift */,
@@ -392,6 +415,7 @@
 				E715459928CF848000B342ED /* HomeBanner.swift */,
 				E70E28CF28D21DAE001A756A /* MerchantMenu.swift */,
 				E70E28D128D21E48001A756A /* MerchantProduct.swift */,
+				E78EF7CA28D5EA8C00F50053 /* UserCart.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,10 +428,24 @@
 			path = Repo;
 			sourceTree = "<group>";
 		};
+		E78EF7A328D5629600F50053 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E78EF7A428D562FC00F50053 /* ProductInfoCell.swift */,
+				E78EF7A528D562FC00F50053 /* ProductInfoCell.xib */,
+				E78EF7C628D5D54200F50053 /* ProductAttributeHeader.swift */,
+				E78EF7C828D5D55600F50053 /* ProductAttributeHeader.xib */,
+				E78EF7CC28D60F7900F50053 /* ProductOptionCell.swift */,
+				E78EF7CD28D60F7900F50053 /* ProductOptionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		E79D13F428A2A32300456710 /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				E779E79B28C787A60047026B /* Base */,
+				E7B02DA928D4DE3A00CE8D30 /* ProductDetail */,
 				E715459D28CF938400B342ED /* Merchant */,
 				E779E7A028C787E90047026B /* Home */,
 				E79D13F528A2A32F00456710 /* Auth */,
@@ -432,6 +470,17 @@
 				E79D13F728A2A35800456710 /* LoginResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E7B02DA928D4DE3A00CE8D30 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E78EF7A328D5629600F50053 /* Cell */,
+				E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */,
+				E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */,
+				E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */,
+			);
+			path = ProductDetail;
 			sourceTree = "<group>";
 		};
 		E7BF448928C5083D0025D5CE /* UIComponent */ = {
@@ -528,10 +577,12 @@
 				E7331F5B28D03DA700B07F96 /* MerchantInfoCell.xib in Resources */,
 				E7331F8E28D0E5B700B07F96 /* ChipCell.xib in Resources */,
 				E7372F9D28CE3FB90033E3E4 /* HomeSectionFooterView.xib in Resources */,
+				E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */,
 				E71545A128CF939E00B342ED /* MerchantViewController.xib in Resources */,
 				E7C8D7FA28CC9F6500E2DD2F /* ProductCategoryCollectionCell.xib in Resources */,
 				E715459828CF7D5D00B342ED /* HomeBannerTableViewCell.xib in Resources */,
 				E7C8D80B28CDFD8E00E2DD2F /* MerchantItemCVCell.xib in Resources */,
+				E78EF7CF28D60F7900F50053 /* ProductOptionCell.xib in Resources */,
 				E715459428CF708A00B342ED /* TitleHeaderTableCell.xib in Resources */,
 				E7BF448428C503410025D5CE /* Auth.storyboard in Resources */,
 				E7C8D80728CDFA2D00E2DD2F /* HomeSectionCell.xib in Resources */,
@@ -540,6 +591,8 @@
 				E7C8D7FE28CC9F9F00E2DD2F /* ProductCategoryCell.xib in Resources */,
 				E7372FA128CE49380033E3E4 /* MerchantItemTableViewCell.xib in Resources */,
 				E72AD02D28D3567C002484FF /* ProductItemCell.xib in Resources */,
+				E78EF7A728D562FC00F50053 /* ProductInfoCell.xib in Resources */,
+				E78EF7C928D5D55600F50053 /* ProductAttributeHeader.xib in Resources */,
 				E77952D6289FC906003771BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +665,7 @@
 			files = (
 				E786B5EB28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift in Sources */,
 				E750DA7528A1730A00B3E345 /* NotificationName+.swift in Sources */,
+				E78EF7A628D562FC00F50053 /* ProductInfoCell.swift in Sources */,
 				E7DC71BC28CB177B00F4E421 /* UserRepo.swift in Sources */,
 				E7331F8D28D0E5B700B07F96 /* ChipCell.swift in Sources */,
 				E779E7A228C788460047026B /* HomeViewModel.swift in Sources */,
@@ -627,12 +681,14 @@
 				E7372FA028CE49380033E3E4 /* MerchantItemTableViewCell.swift in Sources */,
 				E7C8D80628CDFA2D00E2DD2F /* HomeSectionCell.swift in Sources */,
 				E779E7B028C78B930047026B /* FPAddress.swift in Sources */,
+				E7B02DAF28D4E2CE00CE8D30 /* ProductDetailViewModel.swift in Sources */,
 				E750DA6D28A16A8D00B3E345 /* FPNetwork.swift in Sources */,
 				E779E7B228C78C9A0047026B /* ResponseCode.swift in Sources */,
 				E7C8D80128CCA4F300E2DD2F /* UICollectionView+.swift in Sources */,
 				E715459C28CF892700B342ED /* GetHomeBannerResponse.swift in Sources */,
 				E70E28D028D21DAE001A756A /* MerchantMenu.swift in Sources */,
 				E7331F8628D0C77C00B07F96 /* Chip.swift in Sources */,
+				E78EF7D128D6365500F50053 /* UIColor+.swift in Sources */,
 				E70E28D228D21E48001A756A /* MerchantProduct.swift in Sources */,
 				E750DA7328A1703200B3E345 /* FPBaseResponse.swift in Sources */,
 				E7C8D80328CCA67D00E2DD2F /* Draft.swift in Sources */,
@@ -641,6 +697,8 @@
 				E7DC71B828CAF90D00F4E421 /* GetCategoriesResponse.swift in Sources */,
 				E72AD02F28D37913002484FF /* GPSUtils.swift in Sources */,
 				E72AD02C28D3567C002484FF /* ProductItemCell.swift in Sources */,
+				E78EF7C728D5D54200F50053 /* ProductAttributeHeader.swift in Sources */,
+				E7B02DAC28D4DF3000CE8D30 /* ProductDetailViewController.swift in Sources */,
 				E779E7AC28C78B200047026B /* MerchantItem.swift in Sources */,
 				E779E79D28C787CA0047026B /* FPViewController.swift in Sources */,
 				E77952D3289FC906003771BE /* HomeViewController.swift in Sources */,
@@ -667,9 +725,11 @@
 				E7BF448B28C50B140025D5CE /* UIStoryboard+.swift in Sources */,
 				E779E7AA28C78ACC0047026B /* HomeSection.swift in Sources */,
 				E715459728CF7D5D00B342ED /* HomeBannerTableViewCell.swift in Sources */,
+				E78EF7CE28D60F7900F50053 /* ProductOptionCell.swift in Sources */,
 				E779E7B428C790500047026B /* FPLocation.swift in Sources */,
 				E77952F0289FDF51003771BE /* UITableView+.swift in Sources */,
 				E77952D1289FC906003771BE /* SceneDelegate.swift in Sources */,
+				E78EF7CB28D5EA8C00F50053 /* UserCart.swift in Sources */,
 				E79D13F828A2A35800456710 /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,6 +53,7 @@ extension String {
     
     var formatAmount: String? {
         guard let amount = Double(self.toEmoneyAmount) else { return self }
-        return String.currencyFormatter.string(from: NSNumber(value: amount))
+        let formatedPrice = String.currencyFormatter.string(from: NSNumber(value: amount))
+        return "\(formatedPrice ?? "--")đ"
     }
 }
