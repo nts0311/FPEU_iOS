@@ -86,4 +86,16 @@ class MerchantViewModel: FPViewModel {
         return menuList[section - 1]
     }
     
+    func needDisplayCartView() -> Bool {
+        return !UserRepo.shared.cart.isCartEmpty()
+    }
+    
+    func getNumOfItemInCart() -> Int {
+        return UserRepo.shared.cart.getNumItem()
+    }
+    
+    func getTotalPrice() -> Double {
+        return UserRepo.shared.cart.getTotalPrice()
+    }
+    
 }

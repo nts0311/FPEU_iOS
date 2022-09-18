@@ -18,6 +18,9 @@ class MerchantViewController: FPViewController {
     @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var menuListView: ChipCollectionView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var cartButton: UIButton!
+    @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var cartView: UIView!
     
     private var viewModel = MerchantViewModel()
     
@@ -30,6 +33,9 @@ class MerchantViewController: FPViewController {
         }
     }
     
+    var isSelfScrolling = false
+    var selfScrollToSection: Int? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +46,10 @@ class MerchantViewController: FPViewController {
         bindViewModel()
         viewModel.inLoad.accept(())
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,6 +71,8 @@ class MerchantViewController: FPViewController {
         tableView.register(TitleHeaderTableCell.nib, forHeaderFooterViewReuseIdentifier: TitleHeaderTableCell.reuseIdentifier)
         
         menuListView.onClickListener = {
+            self.isSelfScrolling = true
+            self.selfScrollToSection = $0 + 1
             self.tableView.scrollToRow(at: IndexPath.init(row: 0, section: $0 + 1), at: .top, animated: true)
         }
         
@@ -95,6 +103,20 @@ class MerchantViewController: FPViewController {
         })
     }
     
+    private func checkDisplayCart() {
+        if (viewModel.needDisplayCartView()) {
+            cartButton.layer.cornerRadius = 8
+            cartButton.layer.borderWidth = 2
+            cartButton.layer.borderColor = UIColor.mainColor.cgColor
+            
+            cartButton.setTitle("\(viewModel.getNumOfItemInCart())", for: .normal)
+            orderButton.setTitle("Thanh toán - \(String(viewModel.getTotalPrice()).formatAmount ?? "")", for: .normal)
+            
+            cartView.isHidden = false
+        } else {
+            cartView.isHidden = true
+        }
+    }
 }
 
 extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
@@ -104,9 +126,6 @@ extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if (indexPath.section == 0) {
-//            return 436
-//        }
         return UITableView.automaticDimension
     }
     
@@ -172,12 +191,24 @@ extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        if (isSelfScrolling && selfScrollToSection == section) {
+            selfScrollToSection = nil
+            isSelfScrolling = false
+            return
+        }
+        
         if (isScrollingUp) {
             menuListView.highlightItemAt(section - 1)
         }
     }
     
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+        
+        if (isSelfScrolling) {
+            return
+        }
+        
         if (!isScrollingUp) {
             menuListView.highlightItemAt(section - 2)
         }
@@ -190,10 +221,11 @@ extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
         
         let vc = ProductDetailViewController.initFromNib()
         vc.product = viewModel.getProductAt(indexPath: indexPath)
-        navigationController?.pushViewController(vc, animated: true)
+        vc.onDissmissed = {
+            self.checkDisplayCart()
+        }
+        present(vc, animated: true)
     }
-    
-    
 }
 
 enum MerchantTableViewSection: Int {

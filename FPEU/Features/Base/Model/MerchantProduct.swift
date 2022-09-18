@@ -18,6 +18,14 @@ struct MerchantProduct: Decodable {
     var merchantId: Int?
     var tagId: Int?
     var attributes: [ProductAttribute]
+    
+    func getPrice() -> Double {
+        return price ?? 0.0
+    }
+    
+    func getAttributeById(id: Int) -> ProductAttribute? {
+        return attributes.first { $0.id == id }
+    }
 }
 
 struct ProductAttribute: Decodable {
@@ -35,6 +43,10 @@ struct ProductAttribute: Decodable {
     var isMultiple: Bool {
         get { return multiple ?? false }
     }
+    
+    func getOptionById(id: Int) -> ProductAttributeOption? {
+        return options.first { $0.id == id }
+    }
 }
 
 struct ProductAttributeOption: Decodable {
@@ -42,4 +54,8 @@ struct ProductAttributeOption: Decodable {
     var name: String?
     var price: Double?
     var productAttributeId: Int?
+    
+    func getPrice() -> Double {
+        return price ?? 0.0
+    }
 }

@@ -12,9 +12,10 @@ class ProductCartItem: Equatable {
         return lhs.product.id == rhs.product.id
     }
     
-    init(product: MerchantProduct, num: Int) {
+    init(product: MerchantProduct, num: Int, optionSelection: [Int:[Int]]) {
         self.product = product
         self.num = num
+        self.optionSelection = optionSelection
     }
     
     var product: MerchantProduct!
@@ -42,7 +43,7 @@ class UserCart {
         return products.contains(where: { $0.product.id == product.id })
     }
     
-    func addProduct(_ product: MerchantProduct, num: Int) {
+    func addProduct(_ product: MerchantProduct, num: Int, optionSelection: [Int:[Int]]) {
         if (isProductExsited(product)) {
             if let item = getCartItem(id: product.id) {
                 item.incItem()
@@ -51,7 +52,7 @@ class UserCart {
             return
         }
         
-        products.append(ProductCartItem(product: product, num: num))
+        products.append(ProductCartItem(product: product, num: num, optionSelection: optionSelection))
     }
     
     func descProductNum(_ product: MerchantProduct) {
@@ -62,6 +63,36 @@ class UserCart {
         if let productItem = getCartItem(id: product.id) {
             productItem.descItem()
         }
+    }
+    
+    func isCartEmpty() -> Bool {
+        products.isEmpty
+    }
+    
+    func getNumItem() -> Int {
+        products.count
+    }
+    
+    func getTotalPrice() -> Double {
+        var result = 0.0
+        
+        for product in products {
+            var productResult = 0.0
+            productResult += product.product.getPrice()
+            
+            for (attrId, optionIds) in product.optionSelection {
+                let attr = product.product.getAttributeById(id: attrId)
+                
+                for optionId in optionIds {
+                    let option = attr?.getOptionById(id: optionId)
+                    productResult += option?.getPrice() ?? 0.0
+                }
+            }
+            
+            result += productResult * Double(product.num)
+        }
+    
+        return result
     }
     
 }

@@ -12,10 +12,10 @@ fileprivate let INFO_SECTION = 0
 class ProductDetailViewController: FPViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var navbar: UIView!
     @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var itemNumView: ItemNumView!
     
     let viewModel = ProductDetailViewModel()
     
@@ -24,11 +24,13 @@ class ProductDetailViewController: FPViewController {
             viewModel.product = self.product
         }
     }
+    var onDissmissed: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
+        bindViewModel()
     }
     
     override func viewWillLayoutSubviews() {
@@ -52,10 +54,17 @@ class ProductDetailViewController: FPViewController {
         tableView.register(cell: ProductOptionCell.self)
         tableView.register(ProductAttributeHeader.nib, forHeaderFooterViewReuseIdentifier: ProductAttributeHeader.reuseIdentifier)
         
-        buttonBack.rx.tap.subscribe(onNext: {
-            self.navigationController?.popViewController(animated: true)
+        addToCartButton.rx.tap.subscribe(onNext: {
+            self.viewModel.addProductToCart()
+            self.dismiss(animated: true, completion: self.onDissmissed)
         }).disposed(by: disposeBag)
         
+        itemNumView.onNewValue = {
+            self.viewModel.num = $0
+        }
+    }
+    
+    private func bindViewModel() {
         viewModel.canAddToCard.asObservable()
             .bind(to: addToCartButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -69,6 +78,7 @@ class ProductDetailViewController: FPViewController {
             .map { $0 ? "Thêm vào giỏ" : "Chọn topping" }
             .bind(to: addToCartButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
+
     }
     
 }

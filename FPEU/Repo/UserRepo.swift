@@ -13,4 +13,6 @@ class UserRepo {
     private init() { }
     
     public var currentUserAddress: FPAddress? = nil
+    
+    public var cart = UserCart()
 }

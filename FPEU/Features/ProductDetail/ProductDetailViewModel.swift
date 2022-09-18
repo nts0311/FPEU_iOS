@@ -12,11 +12,14 @@ import RxRelay
 class ProductDetailViewModel: FPViewModel {
     
     let canAddToCard = BehaviorRelay(value: false)
+
+    var product: MerchantProduct! {
+        didSet { checkRequiredAttrs() }
+    }
     
-    var product: MerchantProduct!
-    
-    //AttrId: [OptionIds]
     var optionSelection: [Int:[Int]] = [:]
+    
+    var num: Int = 1
     
     func getOptionsForAtrribute(index: Int) -> [ProductAttributeOption] {
         return product.attributes[index].options
@@ -74,14 +77,34 @@ class ProductDetailViewModel: FPViewModel {
     }
     
     func validateInput() {
+        var hasRequiredAttr = product.attributes.contains { $0.isRequired }
         for pattribute in product.attributes {
-            if let attrId = pattribute.id, pattribute.isRequired,
-               !(optionSelection[attrId]?.isEmpty ?? true) {
-                canAddToCard.accept(true)
+            
+            if pattribute.isRequired {
+                hasRequiredAttr = true
+                
+                if let attrId = pattribute.id, !(optionSelection[attrId]?.isEmpty ?? true) {
+                    canAddToCard.accept(true)
+                    return
+                }
+            }
+        }
+        
+        canAddToCard.accept(!hasRequiredAttr)
+    }
+    
+    func checkRequiredAttrs() {
+        for pattribute in product.attributes {
+            if pattribute.isRequired {
+                canAddToCard.accept(false)
                 return
             }
         }
         
-        canAddToCard.accept(false)
+        canAddToCard.accept(true)
+    }
+    
+    func addProductToCart() {
+        UserRepo.shared.cart.addProduct(product, num: num, optionSelection: optionSelection)
     }
 }
