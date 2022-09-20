@@ -30,17 +30,49 @@ class ProductCartItem: Equatable {
     func descItem() {
         num -= 1
     }
+    
+    func calculatePrice() -> Double {
+        var productPrice = product.getPrice()
+        
+        for (attrId, optionIds) in optionSelection {
+            let attr = product.getAttributeById(id: attrId)
+            
+            for optionId in optionIds {
+                let option = attr?.getOptionById(id: optionId)
+                productPrice += option?.getPrice() ?? 0.0
+            }
+        }
+        
+        return Double(num) * productPrice
+    }
+    
+    func getOptionsAsString() -> String {
+        var result = ""
+        
+        for (attrId, optionIds) in optionSelection {
+            let attr = product.getAttributeById(id: attrId)
+            
+            for optionId in optionIds {
+                let option = attr?.getOptionById(id: optionId)
+                result += (option?.name ?? "") + ","
+            }
+        }
+        
+        return String(result.dropLast())
+    }
+    
 }
 
 class UserCart {
-    private var products: [ProductCartItem] = []
+    
+    private(set) var orderedProducts: [ProductCartItem] = []
     
     func getCartItem(id: Int?) -> ProductCartItem? {
-        return products.first(where: { $0.product.id == id })
+        return orderedProducts.first(where: { $0.product.id == id })
     }
     
     func isProductExsited(_ product: MerchantProduct) -> Bool {
-        return products.contains(where: { $0.product.id == product.id })
+        return orderedProducts.contains(where: { $0.product.id == product.id })
     }
     
     func addProduct(_ product: MerchantProduct, num: Int, optionSelection: [Int:[Int]]) {
@@ -52,47 +84,39 @@ class UserCart {
             return
         }
         
-        products.append(ProductCartItem(product: product, num: num, optionSelection: optionSelection))
+        orderedProducts.append(ProductCartItem(product: product, num: num, optionSelection: optionSelection))
     }
     
-    func descProductNum(_ product: MerchantProduct) {
+    func changeNum(of product: MerchantProduct, newNum: Int) {
         if (!isProductExsited(product)) {
             return
         }
         
         if let productItem = getCartItem(id: product.id) {
-            productItem.descItem()
+            productItem.num = newNum
         }
     }
     
     func isCartEmpty() -> Bool {
-        products.isEmpty
+        orderedProducts.isEmpty
     }
     
     func getNumItem() -> Int {
-        products.count
+        orderedProducts.count
     }
     
     func getTotalPrice() -> Double {
         var result = 0.0
         
-        for product in products {
-            var productResult = 0.0
-            productResult += product.product.getPrice()
-            
-            for (attrId, optionIds) in product.optionSelection {
-                let attr = product.product.getAttributeById(id: attrId)
-                
-                for optionId in optionIds {
-                    let option = attr?.getOptionById(id: optionId)
-                    productResult += option?.getPrice() ?? 0.0
-                }
-            }
-            
-            result += productResult * Double(product.num)
+        for product in orderedProducts {
+            result += product.calculatePrice()
         }
     
         return result
+    }
+    
+    func clearCart() {
+        self.orderedProducts.removeAll()
     }
     
 }

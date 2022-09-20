@@ -47,14 +47,14 @@ class MerchantViewController: FPViewController {
         viewModel.inLoad.accept(())
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
+        super.viewWillDisappear(animated)
     }
     
     private func setupViews() {
@@ -78,6 +78,19 @@ class MerchantViewController: FPViewController {
         
         backButton.rx.tap.subscribe(onNext: {
             self.navigationController?.popViewController(animated: true)
+        }).disposed(by: disposeBag)
+        
+        cartButton.rx.tap.subscribe(onNext: {
+            let vc = CartDetailViewController.initFromNib()
+            vc.onDismissed = {
+                self.checkDisplayCart()
+            }
+            self.present(vc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        orderButton.rx.tap.subscribe(onNext: {
+            let vc = CheckInViewController.initFromNib()
+            self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
     }
     
