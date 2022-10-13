@@ -7,7 +7,14 @@
 
 import Foundation
 
-class ProductCartItem: Equatable {
+class ProductCartItem: Equatable, Codable {
+
+    @CodableIgnored
+    var product: MerchantProduct!
+    var num: Int = 0
+    //AttrId: [OptionIds]
+    var optionSelections: [Int:[Int]] = [:]
+    
     static func == (lhs: ProductCartItem, rhs: ProductCartItem) -> Bool {
         return lhs.product.id == rhs.product.id
     }
@@ -15,13 +22,8 @@ class ProductCartItem: Equatable {
     init(product: MerchantProduct, num: Int, optionSelection: [Int:[Int]]) {
         self.product = product
         self.num = num
-        self.optionSelection = optionSelection
+        self.optionSelections = optionSelection
     }
-    
-    var product: MerchantProduct!
-    var num: Int = 0
-    //AttrId: [OptionIds]
-    var optionSelection: [Int:[Int]] = [:]
     
     func incItem() {
         num += 1
@@ -34,7 +36,7 @@ class ProductCartItem: Equatable {
     func calculatePrice() -> Double {
         var productPrice = product.getPrice()
         
-        for (attrId, optionIds) in optionSelection {
+        for (attrId, optionIds) in optionSelections {
             let attr = product.getAttributeById(id: attrId)
             
             for optionId in optionIds {
@@ -49,7 +51,7 @@ class ProductCartItem: Equatable {
     func getOptionsAsString() -> String {
         var result = ""
         
-        for (attrId, optionIds) in optionSelection {
+        for (attrId, optionIds) in optionSelections {
             let attr = product.getAttributeById(id: attrId)
             
             for optionId in optionIds {
@@ -59,6 +61,28 @@ class ProductCartItem: Equatable {
         }
         
         return String(result.dropLast())
+    }
+    
+    
+    func toDict() -> [String:Any] {
+        var result = [String:Any]()
+        
+        result["productId"] = product.id
+        result["num"] = num
+        
+        var userProductSelection = [[String:Any]]()
+        
+        for (attrId, optionIds) in optionSelections {
+            var dict = [String:Any]()
+            dict["attributeId"] = attrId
+            dict["optionsId"] = optionIds
+            
+            userProductSelection.append(dict)
+        }
+        
+        result["attributeSelections"] = userProductSelection
+        
+        return result
     }
     
 }

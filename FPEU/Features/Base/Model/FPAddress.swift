@@ -15,7 +15,7 @@ class FPAddress: Codable {
     var city: String?
     var detail: String?
     var lat: Double?
-    var long: Double?
+    var lng: Double?
     
     init(placemark: CLPlacemark) {
         self.ward = placemark.subAdministrativeArea
@@ -23,7 +23,7 @@ class FPAddress: Codable {
         self.city = placemark.locality
         self.detail = "\(placemark.name ?? ""), \(placemark.subLocality ?? "")"
         self.lat = placemark.location?.coordinate.latitude
-        self.long = placemark.location?.coordinate.longitude
+        self.lng = placemark.location?.coordinate.longitude
     }
     
     func toString() -> String {

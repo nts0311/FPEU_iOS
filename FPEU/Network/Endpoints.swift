@@ -21,5 +21,8 @@ class Endpoint {
     
     public static let getMenus = "/merchant/tag/list"
     public static let getProducts = "/merchant/product/list"
+    
+    public static let orderCheckinInfo = "/enduser/order/checkin-info"
+    public static let orderInfo = "enduser/order/get-info"
 }
 

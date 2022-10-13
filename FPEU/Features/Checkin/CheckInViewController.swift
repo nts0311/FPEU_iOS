@@ -21,6 +21,8 @@ class CheckInViewController: FPViewController {
         super.viewDidLoad()
 
         setupView()
+        bindViewModel()
+        viewModel.getOrderCheckinInfo()
     }
 
     private func setupView() {
@@ -31,6 +33,23 @@ class CheckInViewController: FPViewController {
         tableView.dataSource = self
         tableView.delegate = self
         //tableView.reloadData()
+    }
+    
+    private func bindViewModel() {
+        viewModel.outApiResult.asObservable()
+        .subscribe(onNext: {_ in
+            self.reloadData()
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    private func reloadData() {
+        if let paymentDetail = viewModel.paymentInfo {
+            totalPricelabel.text = String(paymentDetail.toPaymentDetail().totalPayment).formatAmount
+            paymentMethodLabel.text = "Tiền mặt"
+        }
+        
+        self.tableView.reloadData()
     }
 }
 
@@ -59,6 +78,7 @@ extension CheckInViewController: UITableViewDataSource, UITableViewDelegate {
             let currentAddress = viewModel.getSelectedAddress()
             let cell: CheckInAddressCell = tableView.dequeueReusableCell(at: indexPath)
             cell.address = currentAddress!
+            cell.estimatedRouteInfo = viewModel.estimatedRouteInfo
             return cell
         case .orderItems:
             let cell: OrderedProductCell = tableView.dequeueReusableCell(at: indexPath)
@@ -74,6 +94,10 @@ extension CheckInViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .paymentDetail:
             let cell: PaymentDetailCell = tableView.dequeueReusableCell(at: indexPath)
+            if let paymentInfo = viewModel.paymentInfo {
+                let paymentDetail = paymentInfo.toPaymentDetail()
+                cell.paymentDetail = paymentDetail
+            }
             return cell
             
         default:

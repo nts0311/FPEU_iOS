@@ -12,8 +12,8 @@ class GPSUtils {
     
     public static func calculateDistance(address1: FPAddress?, address2: FPAddress?) -> Double? {
         guard let address1 = address1, let address2 = address2,
-              let lat1 = address1.lat, let long1 = address1.long,
-              let lat2 = address2.lat, let long2 = address2.long else {
+              let lat1 = address1.lat, let long1 = address1.lng,
+              let lat2 = address2.lat, let long2 = address2.lng else {
             return nil
         }
 

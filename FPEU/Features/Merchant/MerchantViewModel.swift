@@ -39,7 +39,7 @@ class MerchantViewModel: FPViewModel {
                     .catchAndReturn(GetProductResponse())
             }
             .compactMap {
-                return $0?.code == "0" ? $0?.products : []
+                $0?.products
             }
         
         Observable.combineLatest(getMenu, getProduct)

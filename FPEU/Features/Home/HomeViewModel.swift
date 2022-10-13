@@ -61,7 +61,7 @@ class HomeViewModel: FPViewModel {
             })
             .compactMap { $0?.currentLocation }
             .flatMapLatest { address in
-                FPNetwork.singlePost(GetNearbyMerchantResponse.self, endpoint: Endpoint.getNearbyMerchant, params: ["lat" : address.lat, "long": address.long])
+                FPNetwork.singlePost(GetNearbyMerchantResponse.self, endpoint: Endpoint.getNearbyMerchant, params: ["lat" : address.lat, "long": address.lng])
                     .catchErrorJustComplete()
             }
             .compactMap { $0?.merchants }
