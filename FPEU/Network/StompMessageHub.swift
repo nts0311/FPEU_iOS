@@ -50,12 +50,16 @@ class StompMessageHub {
     private var sharedObservablerMap = [String:Observable<WSMessage>]()
     
     private init() {
-        
+        connectToSocket()
     }
     
     func connectToSocket() {
+        if (socketClient.isConnected()) {
+            return
+        }
+        
         let url = NSURL(string: ServiceUrl.wssUrl)!
-        let jwt = UserDataDefaults.shared.jwtToken
+        let jwt = UserDataDefaults.shared.jwtToken ?? ""
         socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL), delegate: self, connectionHeaders: ["Authorization" : "Bearer \(jwt)"])
     }
     
@@ -66,6 +70,7 @@ class StompMessageHub {
             let subject = PublishSubject<WSMessage>()
             sharedObservablerMap[endpoint] = subject.share()
             endpointListenerMap[endpoint] = subject
+            socketClient.subscribe(destination: endpoint)
             return subject
         }
         
@@ -76,8 +81,8 @@ class StompMessageHub {
 
 extension StompMessageHub: StompClientLibDelegate {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-        if let subject = endpointListenerMap[destination] as? PublishSubject<WSMessage>, let wsMessage = jsonBody as? WSMessage {
-            subject.onNext(wsMessage)
+        if let subject = endpointListenerMap[destination], let dict = jsonBody as? [String:AnyObject?], let code = dict["code"] as? Int, let message = dict["body"] as? String {
+            subject.onNext(WSMessage(code: code, body: message))
         }
     }
     

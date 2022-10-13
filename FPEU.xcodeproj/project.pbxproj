@@ -48,6 +48,8 @@
 		E7372FA028CE49380033E3E4 /* MerchantItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7372F9E28CE49380033E3E4 /* MerchantItemTableViewCell.swift */; };
 		E7372FA128CE49380033E3E4 /* MerchantItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7372F9F28CE49380033E3E4 /* MerchantItemTableViewCell.xib */; };
 		E7372FA328CE575A0033E3E4 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7372FA228CE575A0033E3E4 /* Double+.swift */; };
+		E745E35128F84AC4002F150D /* OrderRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E745E35028F84AC4002F150D /* OrderRepo.swift */; };
+		E745E35328F85503002F150D /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E745E35228F85503002F150D /* DriverInfo.swift */; };
 		E750DA6928A168E100B3E345 /* UserDataDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E750DA6828A168E100B3E345 /* UserDataDefaults.swift */; };
 		E750DA6B28A1697B00B3E345 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E750DA6A28A1697B00B3E345 /* Optional+.swift */; };
 		E750DA6D28A16A8D00B3E345 /* FPNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E750DA6C28A16A8D00B3E345 /* FPNetwork.swift */; };
@@ -121,6 +123,9 @@
 		E7DC71B828CAF90D00F4E421 /* GetCategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DC71B728CAF90D00F4E421 /* GetCategoriesResponse.swift */; };
 		E7DC71BA28CAF96A00F4E421 /* GetHomeSectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DC71B928CAF96A00F4E421 /* GetHomeSectionResponse.swift */; };
 		E7DC71BC28CB177B00F4E421 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DC71BB28CB177B00F4E421 /* UserRepo.swift */; };
+		E7E240AB28F800EB008E5108 /* OrderedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E240A928F800EB008E5108 /* OrderedItemCell.swift */; };
+		E7E240AC28F800EB008E5108 /* OrderedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E240AA28F800EB008E5108 /* OrderedItemCell.xib */; };
+		E7E240AE28F80A48008E5108 /* OrderTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E240AD28F80A48008E5108 /* OrderTrackingViewModel.swift */; };
 		F64192AFF4C2C4AA7DC42E70 /* Pods_FPEU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C2D0B5E0DA5ED4684FF77 /* Pods_FPEU.framework */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +174,8 @@
 		E7372F9E28CE49380033E3E4 /* MerchantItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantItemTableViewCell.swift; sourceTree = "<group>"; };
 		E7372F9F28CE49380033E3E4 /* MerchantItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantItemTableViewCell.xib; sourceTree = "<group>"; };
 		E7372FA228CE575A0033E3E4 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		E745E35028F84AC4002F150D /* OrderRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepo.swift; sourceTree = "<group>"; };
+		E745E35228F85503002F150D /* DriverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInfo.swift; sourceTree = "<group>"; };
 		E750DA6828A168E100B3E345 /* UserDataDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDefaults.swift; sourceTree = "<group>"; };
 		E750DA6A28A1697B00B3E345 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		E750DA6C28A16A8D00B3E345 /* FPNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPNetwork.swift; sourceTree = "<group>"; };
@@ -244,6 +251,9 @@
 		E7DC71B728CAF90D00F4E421 /* GetCategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoriesResponse.swift; sourceTree = "<group>"; };
 		E7DC71B928CAF96A00F4E421 /* GetHomeSectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeSectionResponse.swift; sourceTree = "<group>"; };
 		E7DC71BB28CB177B00F4E421 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
+		E7E240A928F800EB008E5108 /* OrderedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedItemCell.swift; sourceTree = "<group>"; };
+		E7E240AA28F800EB008E5108 /* OrderedItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderedItemCell.xib; sourceTree = "<group>"; };
+		E7E240AD28F80A48008E5108 /* OrderTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTrackingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +530,7 @@
 				E70E28D128D21E48001A756A /* MerchantProduct.swift */,
 				E78EF7CA28D5EA8C00F50053 /* UserCart.swift */,
 				E71D461628E33F3700638B22 /* OrderInfo.swift */,
+				E745E35228F85503002F150D /* DriverInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -528,8 +539,9 @@
 			isa = PBXGroup;
 			children = (
 				E77ADF2028F5D49A00B4C5F6 /* Cell */,
-				E77ADF1C28F5D44C00B4C5F6 /* OrderTrackingViewController.swift */,
 				E77ADF1D28F5D44C00B4C5F6 /* OrderTrackingViewController.xib */,
+				E77ADF1C28F5D44C00B4C5F6 /* OrderTrackingViewController.swift */,
+				E7E240AD28F80A48008E5108 /* OrderTrackingViewModel.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -543,6 +555,8 @@
 				E70313DC28F7BFE800058081 /* DeliveringDetailCell.xib */,
 				E70313DF28F7DA0700058081 /* OrderdItemsCell.swift */,
 				E70313E028F7DA0700058081 /* OrderdItemsCell.xib */,
+				E7E240A928F800EB008E5108 /* OrderedItemCell.swift */,
+				E7E240AA28F800EB008E5108 /* OrderedItemCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -551,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				E7DC71BB28CB177B00F4E421 /* UserRepo.swift */,
+				E745E35028F84AC4002F150D /* OrderRepo.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -732,6 +747,7 @@
 				E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */,
 				E71545A128CF939E00B342ED /* MerchantViewController.xib in Resources */,
 				E7C8D7FA28CC9F6500E2DD2F /* ProductCategoryCollectionCell.xib in Resources */,
+				E7E240AC28F800EB008E5108 /* OrderedItemCell.xib in Resources */,
 				E715459828CF7D5D00B342ED /* HomeBannerTableViewCell.xib in Resources */,
 				E7C8D80B28CDFD8E00E2DD2F /* MerchantItemCVCell.xib in Resources */,
 				E78EF7CF28D60F7900F50053 /* ProductOptionCell.xib in Resources */,
@@ -843,6 +859,7 @@
 				E7C8D7FF28CC9F9F00E2DD2F /* ProductCategoryCell.swift in Sources */,
 				E786B5E728CA433E00EE1849 /* UIEncodable+.swift in Sources */,
 				E715459A28CF848000B342ED /* HomeBanner.swift in Sources */,
+				E7E240AE28F80A48008E5108 /* OrderTrackingViewModel.swift in Sources */,
 				E7372FA028CE49380033E3E4 /* MerchantItemTableViewCell.swift in Sources */,
 				E7C8D80628CDFA2D00E2DD2F /* HomeSectionCell.swift in Sources */,
 				E779E7B028C78B930047026B /* FPAddress.swift in Sources */,
@@ -856,6 +873,7 @@
 				E7331F8628D0C77C00B07F96 /* Chip.swift in Sources */,
 				E78EF7D128D6365500F50053 /* UIColor+.swift in Sources */,
 				E75AD70A28DA13D7007D1C2F /* CheckInViewModel.swift in Sources */,
+				E745E35128F84AC4002F150D /* OrderRepo.swift in Sources */,
 				E70E28D228D21E48001A756A /* MerchantProduct.swift in Sources */,
 				E750DA7328A1703200B3E345 /* FPBaseResponse.swift in Sources */,
 				E70313DD28F7BFE800058081 /* DeliveringDetailCell.swift in Sources */,
@@ -885,8 +903,10 @@
 				E7372F9C28CE3FB90033E3E4 /* HomeSectionFooterView.swift in Sources */,
 				E71545A028CF939E00B342ED /* MerchantViewController.swift in Sources */,
 				E7BF448828C503A80025D5CE /* LoginViewModel.swift in Sources */,
+				E7E240AB28F800EB008E5108 /* OrderedItemCell.swift in Sources */,
 				E7DC71BA28CAF96A00F4E421 /* GetHomeSectionResponse.swift in Sources */,
 				E779E79F28C787DB0047026B /* FPViewModel.swift in Sources */,
+				E745E35328F85503002F150D /* DriverInfo.swift in Sources */,
 				E750DA7128A16E0500B3E345 /* String+.swift in Sources */,
 				E750DA6F28A16CFA00B3E345 /* ServiceUrl.swift in Sources */,
 				E7C8D80A28CDFD8E00E2DD2F /* MerchantItemCVCell.swift in Sources */,
@@ -1054,6 +1074,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M5MM3VWR4K;
@@ -1072,6 +1093,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sonnt.FPEU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -48,6 +48,7 @@ class LoginViewController: FPViewController {
         viewModel.outHasLoggedInSuccess.subscribe(onNext: {hasLoggedIn in
             if (hasLoggedIn) {
                 self.dismiss(animated: true)
+                NotificationCenter.default.post(name: .loggedIn, object: nil, userInfo: nil)
             }
         }).disposed(by: disposeBag)
         

@@ -28,6 +28,16 @@ struct OrderedItem: Decodable {
     var name: String
     var num: Int
     var attributes: [String]
+    
+    func getAttrsAsString() -> String {
+        var result = ""
+        
+        for str in attributes {
+            result += str + ", "
+        }
+        
+        return String(result.dropLast(2))
+    }
 }
 
 struct OrderInfo: Decodable {
@@ -40,9 +50,11 @@ struct OrderInfo: Decodable {
     var item: [OrderedItem]
     var paymentInfo: OrderPaymentInfo
     var merchantName: String
-    var driverName: String?
-    var driverPhone: String?
-    var driverPlate: String?
+    var driverInfo: DriverInfo?
+    
+    func getOrderStatus() -> OrderStatus {
+        return OrderStatus.init(rawValue: orderStatus ) ?? .unknown
+    }
 }
 
 enum OrderStatus: String {
@@ -52,4 +64,5 @@ enum OrderStatus: String {
     case delivering = "DELIVERING"
     case succeed = "SUCCEED"
     case canceled = "CANCELED"
+    case unknown = "UNKNOWN"
 }

@@ -33,6 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             .disposed(by: disposeBag)
         
+        StompMessageHub.shared
+        NotificationCenter.default.rx.notification(.loggedIn)
+            .debounce(RxTimeInterval.milliseconds(200), scheduler: globalScheduler)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {_ in
+                StompMessageHub.shared
+            })
+            .disposed(by: disposeBag)
+        
         return true
     }
 

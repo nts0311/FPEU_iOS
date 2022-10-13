@@ -28,7 +28,9 @@ class DeliveringDetailCell: UITableViewCell {
     }
 
     func initData() {
-        if let driverName = orderInfo.driverName, let driverPlate = orderInfo.driverPlate {
+        if let driverName = orderInfo.driverInfo?.name, let driverPlate = orderInfo.driverInfo?.driverPlate {
+            driverInfoView.isHidden = false
+            driverInfoDivider.isHidden = false
             driverNameLabel.text = driverName
             driverPlateLabel.text = driverPlate
         } else {
@@ -41,7 +43,7 @@ class DeliveringDetailCell: UITableViewCell {
     }
     
     @IBAction func buttonCallDriverTapped(_ sender: Any) {
-        guard let driverPhone = orderInfo.driverPhone else {
+        guard let driverPhone = orderInfo.driverInfo?.phone else {
             return
         }
         

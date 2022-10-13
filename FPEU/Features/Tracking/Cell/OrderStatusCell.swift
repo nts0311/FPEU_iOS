@@ -31,15 +31,15 @@ class OrderStatusCell: UITableViewCell {
         }
     }
     
-    func setStateRow1(isEnabled: Bool) {
+    private func setStateRow1(isEnabled: Bool) {
         orderConfirmedDescriptionLabel.isHidden = !isEnabled
     }
     
-    func setStateRow2(isEnabled: Bool) {
+    private func setStateRow2(isEnabled: Bool) {
         gettingFoodReadyDesLabel.isHidden = !isEnabled
     }
     
-    func setStateRow3(isEnabled: Bool) {
+    private func setStateRow3(isEnabled: Bool) {
         deliveringOrderLabel.isHidden = !isEnabled
     }
     

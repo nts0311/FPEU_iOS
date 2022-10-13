@@ -32,7 +32,6 @@ class CheckInViewController: FPViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        //tableView.reloadData()
     }
     
     private func bindViewModel() {
@@ -41,6 +40,11 @@ class CheckInViewController: FPViewController {
             self.reloadData()
         })
         .disposed(by: disposeBag)
+        
+        placeOrderButton.rx.tap.subscribe(onNext: {
+            let vc = OrderTrackingViewController.initFromNib()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: disposeBag)
     }
     
     private func reloadData() {

@@ -10,3 +10,5 @@ import Foundation
 public let networkErrorMessage = "Có lỗi xảy ra, vui lòng thử lại sau."
 
 let success = 200
+
+let successCode = "0"
