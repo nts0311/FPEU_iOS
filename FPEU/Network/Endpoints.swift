@@ -24,6 +24,7 @@ class Endpoint {
     
     public static let orderCheckinInfo = "/enduser/order/checkin-info"
     public static let orderInfo = "/enduser/order/get-info"
+    public static let createOrder = "/enduser/order/create"
     
     public static let getActiveOrder = "/enduser/order/get-active-order"
 }

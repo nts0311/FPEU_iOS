@@ -41,10 +41,14 @@ class CheckInViewController: FPViewController {
         })
         .disposed(by: disposeBag)
         
-        placeOrderButton.rx.tap.subscribe(onNext: {
-            let vc = OrderTrackingViewController.initFromNib()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }).disposed(by: disposeBag)
+        viewModel.outPlaceOrderSuccess.asObservable()
+            .subscribe(onNext: {
+                let vc = OrderTrackingViewController.initFromNib()
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        placeOrderButton.rx.tap.bind(to: viewModel.inButtonPlaceOrderTapped).disposed(by: disposeBag)
     }
     
     private func reloadData() {

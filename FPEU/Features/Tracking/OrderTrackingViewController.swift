@@ -31,6 +31,8 @@ class OrderTrackingViewController: FPViewController {
                 switch status  {
                 case .preparing:
                     self.tableView.reloadSections(IndexSet(integer: TableViewSection.deliveryDetail.rawValue), with: .none)
+                case .succeed:
+                    self.onOrderSuccessed()
                 default: ()
                 }
             })
@@ -46,6 +48,15 @@ class OrderTrackingViewController: FPViewController {
         .disposed(by: disposeBag)
     }
 
+    func onOrderSuccessed() {
+        OrderRepo.shared.orderInfo = nil
+        showAlertDialog(title: "Hoàn thành", message: "Đơn hàng đã hoàn thành! Hãy đánh giá trải nghiệm của bạn nhé!", firstActionTitle: "Đánh giá", secondActionTitle: "Về trang chủ", firstAction: {
+            
+        }, secondAction: {
+            self.navigationController?.popToRootViewController(animated: true)
+        })
+    }
+    
 }
 
 extension OrderTrackingViewController: UITableViewDataSource {
@@ -70,9 +81,7 @@ extension OrderTrackingViewController: UITableViewDataSource {
         case .orderedItemList:
             let cell: OrderdItemsCell = tableView.dequeueReusableCell(at: indexPath)
             cell.items = viewModel.getOrderedItemList()
-            cell.onHeightChanged = {
-                self.tableView.reloadSections(IndexSet(integer: TableViewSection.orderedItemList.rawValue), with: .none)
-            }
+            cell.layoutIfNeeded()
             return cell
         case .paymentDetail:
             let cell: PaymentDetailCell = tableView.dequeueReusableCell(at: indexPath)

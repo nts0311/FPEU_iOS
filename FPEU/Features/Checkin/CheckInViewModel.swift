@@ -19,9 +19,11 @@ class CheckinViewModel: FPViewModel {
         }
     }
     
+    let inButtonPlaceOrderTapped = PublishRelay<Void>()
     let inLoad = PublishRelay<Void>()
     
     let outApiResult = PublishRelay<Void>()
+    let outPlaceOrderSuccess = PublishRelay<Void>()
     
     var estimatedRouteInfo: OrderEstimatedRouteInfo?
     var paymentInfo: OrderPaymentInfo?
@@ -36,7 +38,26 @@ class CheckinViewModel: FPViewModel {
     
     override init() {
         super.init()
-    
+        inButtonPlaceOrderTapped.flatMapLatest { () -> Single<CreateNewOrderResponse?> in
+            
+            guard let address = self.getSelectedAddress() else {
+                return Single.just(CreateNewOrderResponse())
+            }
+            
+            let params: [String:Any] = [
+                "addressId":  address.id,
+                "userProductSelection": self.cart.orderedProducts.map({ $0.toDict() })
+            ]
+            
+            return FPNetwork.singlePost(CreateNewOrderResponse.self, endpoint: Endpoint.createOrder, params: params)
+                .catchAndReturn(CreateNewOrderResponse())
+        }
+        .filter {$0?.code == successCode && $0?.orderId != nil}
+        .asObservable()
+        .mapToVoid()
+        .bind(to: outPlaceOrderSuccess)
+        .disposed(by: disposeBag)
+       
     }
     
     func getOrderCheckinInfo() {
@@ -61,11 +82,6 @@ class CheckinViewModel: FPViewModel {
                 self.outApiResult.accept(())
             })
             .disposed(by: disposeBag)
-    }
-    
-    
-    func placeOrder() {
-        
     }
     
 }

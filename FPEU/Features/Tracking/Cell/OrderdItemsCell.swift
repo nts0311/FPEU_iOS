@@ -8,11 +8,24 @@
 import UIKit
 import RxSwift
 
+final class ContentSizedTableView: UITableView {
+    override var contentSize:CGSize {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        layoutIfNeeded()
+        return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height)
+    }
+}
+
 class OrderdItemsCell: UITableViewCell {
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableView: ContentSizedTableView!
+    //@IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
     
@@ -28,12 +41,12 @@ class OrderdItemsCell: UITableViewCell {
         cardView.layer.borderColor = UIColor.systemGray5.cgColor
         tableView.register(cell: OrderedItemCell.self)
         tableView.dataSource = self
-        tableView.rx.observe(CGSize.self, #keyPath(UITableView.contentSize))
-            .subscribe(onNext: { contentSize in
-                self.tableViewHeightConstraint.constant = contentSize?.height ?? 0
-                self.onHeightChanged()
-            })
-            .disposed(by: disposeBag)
+//        tableView.rx.observe(CGSize.self, #keyPath(UITableView.contentSize))
+//            .subscribe(onNext: { contentSize in
+//                self.tableViewHeightConstraint.constant = contentSize?.height ?? 0
+//                self.onHeightChanged()
+//            })
+//            .disposed(by: disposeBag)
     }
 
     func initData() {

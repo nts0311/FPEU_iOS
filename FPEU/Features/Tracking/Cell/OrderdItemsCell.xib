@@ -22,17 +22,14 @@
                         <rect key="frame" x="16" y="0.0" width="339" height="105"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Món đã đặt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSN-W4-sLj">
-                                <rect key="frame" x="16" y="8" width="323" height="81"/>
+                                <rect key="frame" x="16" y="8" width="323" height="21.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JgE-D3-QLg">
-                                <rect key="frame" x="0.0" y="97" width="339" height="0.0"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JgE-D3-QLg" customClass="ContentSizedTableView" customModule="FPEU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="37.5" width="339" height="59.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="wuu-4O-0be"/>
-                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -63,7 +60,6 @@
             <connections>
                 <outlet property="cardView" destination="cPF-5f-kbF" id="z5O-Py-ds2"/>
                 <outlet property="tableView" destination="JgE-D3-QLg" id="grC-hV-vyQ"/>
-                <outlet property="tableViewHeightConstraint" destination="wuu-4O-0be" id="esO-Fm-2dq"/>
             </connections>
             <point key="canvasLocation" x="167.39130434782609" y="150.33482142857142"/>
         </tableViewCell>
