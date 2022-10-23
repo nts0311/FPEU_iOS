@@ -88,6 +88,15 @@ class HomeViewModel: FPViewModel {
 
         UserRepo.shared.currentUserAddress = location
     }
+    
+    func hasLocalActiveOrder() -> Bool {
+        return OrderRepo.shared.orderInfo == nil
+    }
+    
+    func getActiveOrder() -> Single<OrderInfo?> {
+        return OrderRepo.shared.getActiveOrder()
+    }
+    
 }
 
 

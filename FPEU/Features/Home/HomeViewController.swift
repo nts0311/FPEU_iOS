@@ -16,6 +16,7 @@ class HomeViewController: FPViewController {
     
     @IBOutlet weak var labelAddress: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonOrderTracking: UIButton!
     
     let viewModel = HomeViewModel()
     
@@ -29,8 +30,9 @@ class HomeViewController: FPViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
         setupViews()
+        bindViewModel()
+        checkActiveOrder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,12 +75,28 @@ class HomeViewController: FPViewController {
         tableView.register(cell: MerchantItemTableViewCell.self)
         tableView.register(cell: HomeBannerTableViewCell.self)
         tableView.register(TitleHeaderTableCell.nib, forHeaderFooterViewReuseIdentifier: TitleHeaderTableCell.reuseIdentifier)
+        
+        buttonOrderTracking.rx.tap
+            .subscribe(onNext: {
+                OrderTrackingViewController.showOn(self.navigationController)
+            }).disposed(by: disposeBag)
     }
     
     private func reloadData() {
         labelAddress.text = UserRepo.shared.currentUserAddress?.toString()
         tableView.reloadData()
     }
+    
+    private func checkActiveOrder() {
+        if viewModel.hasLocalActiveOrder() {
+            buttonOrderTracking.isHidden = false
+        } else {
+            viewModel.getActiveOrder().subscribe(onSuccess: {orderInfo in
+                self.buttonOrderTracking.isHidden = (orderInfo != nil)
+            }).disposed(by: disposeBag)
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

@@ -32,6 +32,8 @@ class CheckInViewController: FPViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        navigationItem.title = "Thông tin đơn hàng"
     }
     
     private func bindViewModel() {
@@ -43,8 +45,7 @@ class CheckInViewController: FPViewController {
         
         viewModel.outPlaceOrderSuccess.asObservable()
             .subscribe(onNext: {
-                let vc = OrderTrackingViewController.initFromNib()
-                self.navigationController?.pushViewController(vc, animated: true)
+                OrderTrackingViewController.showOn(self.navigationController)
             })
             .disposed(by: disposeBag)
         

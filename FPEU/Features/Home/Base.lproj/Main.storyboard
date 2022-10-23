@@ -129,6 +129,18 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BH-ac-EFr">
+                                <rect key="frame" x="338" y="786" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="6Sw-wN-DEB"/>
+                                    <constraint firstAttribute="height" constant="60" id="SV7-nb-JGU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ic_order_button">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,10 +149,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eju-Lz-9lq" secondAttribute="trailing" constant="16" id="PP3-jp-Xg0"/>
                             <constraint firstItem="eju-Lz-9lq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="S8Y-Bn-dMT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eju-Lz-9lq" secondAttribute="bottom" id="SIL-f4-npO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0BH-ac-EFr" secondAttribute="trailing" constant="16" id="inU-ne-cAK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0BH-ac-EFr" secondAttribute="bottom" constant="16" id="yXu-8a-dya"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6Op-AR-fxd"/>
                     <connections>
+                        <outlet property="buttonOrderTracking" destination="0BH-ac-EFr" id="9TM-F3-MWO"/>
                         <outlet property="labelAddress" destination="EPE-yL-k8S" id="uRd-81-UMK"/>
                         <outlet property="tableView" destination="KVL-4V-gQ6" id="PDd-hk-tsi"/>
                     </connections>
@@ -171,6 +186,7 @@
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="ic_arrow_right" width="256" height="256"/>
+        <image name="ic_order_button" width="30" height="30"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="117"/>

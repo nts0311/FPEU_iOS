@@ -20,6 +20,9 @@ class OrderTrackingViewController: FPViewController {
         tableView.register(cell: OrderdItemsCell.self)
         tableView.register(cell: PaymentDetailCell.self)
         tableView.dataSource = self
+        
+        navigationItem.title = "Theo dõi đơn hàng"
+        
         bindViewModel()
     }
     
@@ -27,6 +30,7 @@ class OrderTrackingViewController: FPViewController {
         viewModel.orderStatusRelay.asObservable()
             .filter { status in status != .unknown}
             .subscribe(onNext: {status in
+                self.tableView.beginUpdates()
                 self.tableView.reloadSections(IndexSet(integer: TableViewSection.orderStatus.rawValue), with: .none)
                 switch status  {
                 case .preparing:
@@ -35,6 +39,7 @@ class OrderTrackingViewController: FPViewController {
                     self.onOrderSuccessed()
                 default: ()
                 }
+                self.tableView.endUpdates()
             })
             .disposed(by: disposeBag)
         
@@ -49,7 +54,7 @@ class OrderTrackingViewController: FPViewController {
     }
 
     func onOrderSuccessed() {
-        OrderRepo.shared.orderInfo = nil
+        //OrderRepo.shared.orderInfo = nil
         showAlertDialog(title: "Hoàn thành", message: "Đơn hàng đã hoàn thành! Hãy đánh giá trải nghiệm của bạn nhé!", firstActionTitle: "Đánh giá", secondActionTitle: "Về trang chủ", firstAction: {
             
         }, secondAction: {
@@ -92,6 +97,13 @@ extension OrderTrackingViewController: UITableViewDataSource {
         }
     }
     
+}
+
+extension OrderTrackingViewController {
+    static func showOn(_ navController: UINavigationController?) {
+        let vc = OrderTrackingViewController.initFromNib()
+        navController?.pushViewController(vc, animated: true)
+    }
 }
 
 fileprivate enum TableViewSection: Int {

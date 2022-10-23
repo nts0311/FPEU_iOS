@@ -76,6 +76,16 @@ class StompMessageHub {
         
     }
     
+    public func unsubscribe(destination: String) {
+        if (sharedObservablerMap[destination] == nil) {
+            return
+        }
+        
+        socketClient.unsubscribe(destination: destination)
+        endpointListenerMap.removeValue(forKey: destination)
+        sharedObservablerMap.removeValue(forKey: destination)
+    }
+    
     static let shared = StompMessageHub()
 }
 

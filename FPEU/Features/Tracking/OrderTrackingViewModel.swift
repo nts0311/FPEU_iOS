@@ -18,6 +18,10 @@ class OrderTrackingViewModel: FPViewModel {
         super.init()
     }
     
+    deinit {
+        messageHub.unsubscribe(destination: Endpoint.wsOrderStatus)
+    }
+    
     var orderInfo: OrderInfo? {
         return OrderRepo.shared.orderInfo
     }
@@ -43,7 +47,7 @@ class OrderTrackingViewModel: FPViewModel {
     }
     
     func observeOrderStatus() {
-        messageHub.subscribe(to: "/users/ws/eu/orderStatus")
+        messageHub.subscribe(to: Endpoint.wsOrderStatus)
         .do(onNext: {message in
             self.processWSMessage(message: message)
         })
