@@ -9,6 +9,9 @@ import UIKit
 import GoogleMaps
 import IQKeyboardManagerSwift
 import RxSwift
+import GooglePlaces
+
+let GoogleMapKey = "AIzaSyAQ_DgW4JkqZXL2rg0XuT8TuxW81ewVulc"
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey("AIzaSyDDBPyCwVvmdpEgm6XHS-9nCjkHpXfGqwI")
+        GMSServices.provideAPIKey(GoogleMapKey)
+        GMSPlacesClient.provideAPIKey(GoogleMapKey)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         

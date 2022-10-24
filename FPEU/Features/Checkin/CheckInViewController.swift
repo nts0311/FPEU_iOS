@@ -34,6 +34,13 @@ class CheckInViewController: FPViewController {
         tableView.delegate = self
         
         navigationItem.title = "Thông tin đơn hàng"
+        
+        NotificationCenter.default.rx.notification(.changeCurrentAddress)
+            .subscribe(onNext: {_ in
+                //self.tableView.reloadData()
+                self.viewModel.getOrderCheckinInfo()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModel() {
@@ -88,6 +95,9 @@ extension CheckInViewController: UITableViewDataSource, UITableViewDelegate {
             let cell: CheckInAddressCell = tableView.dequeueReusableCell(at: indexPath)
             cell.address = currentAddress!
             cell.estimatedRouteInfo = viewModel.estimatedRouteInfo
+            cell.onChangeAddressTapped = {
+                LocationListViewController.showOn(self.navigationController)
+            }
             return cell
         case .orderItems:
             let cell: OrderedProductCell = tableView.dequeueReusableCell(at: indexPath)

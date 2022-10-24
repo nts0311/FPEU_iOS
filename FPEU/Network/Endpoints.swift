@@ -29,5 +29,8 @@ class Endpoint {
     public static let getActiveOrder = "/enduser/order/get-active-order"
     
     public static let wsOrderStatus = "/users/ws/eu/orderStatus"
+    
+    public static let locationList = "/enduser/info/location-list"
+    public static let addLocation = "/enduser/info/add-location"
 }
 

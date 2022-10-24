@@ -97,6 +97,11 @@ class HomeViewController: FPViewController {
         }
     }
     
+    @IBAction func toAddressList(_ sender: Any) {
+        LocationListViewController.showOn(navigationController)
+    }
+    
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -150,6 +155,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .nearbyRestaurant:
             let cell: MerchantItemTableViewCell = tableView.dequeueReusableCell(at: indexPath)
             cell.merchantItem = nearbyRestaurants[indexPath.row]
+            
             return cell
             
         default:
@@ -169,7 +175,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .banner:
             return UITableView.automaticDimension
         case .homeSection:
-            return UITableView.automaticDimension
+            return 0
         case .nearbyRestaurant:
             return UITableView.automaticDimension
             
@@ -217,6 +223,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return nil
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch HomeTableViewSection.init(rawValue: indexPath.section) {
+            
+        case .nearbyRestaurant:
+            let vc = MerchantViewController.initFromNib()
+            vc.merchantItem = nearbyRestaurants[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            ()
+        }
+    }
 }
 
 enum HomeTableViewSection: Int {

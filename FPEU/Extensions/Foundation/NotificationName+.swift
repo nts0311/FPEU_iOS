@@ -10,4 +10,5 @@ import Foundation
 public extension Notification.Name {
     static let sessionExpired = Notification.Name(rawValue: "sessionExpired")
     static let loggedIn = Notification.Name(rawValue: "loggedIn")
+    static let changeCurrentAddress = Notification.Name(rawValue: "changedCurrentAddress")
 }

@@ -60,6 +60,9 @@
                                                             <constraint firstAttribute="trailing" secondItem="5AJ-OZ-0D1" secondAttribute="trailing" id="dkt-f4-UP7"/>
                                                             <constraint firstItem="EPE-yL-k8S" firstAttribute="top" secondItem="iSI-VB-jxW" secondAttribute="top" id="h77-bm-tUS"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <action selector="toAddressList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6p2-0J-XZX"/>
+                                                        </connections>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psU-zh-DCy">
                                                         <rect key="frame" x="316" y="0.0" width="31" height="31"/>

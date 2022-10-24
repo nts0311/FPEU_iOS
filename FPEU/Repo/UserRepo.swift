@@ -12,7 +12,15 @@ class UserRepo {
     
     private init() { }
     
-    public var currentUserAddress: FPAddress? = nil
+    public var currentUserAddress: FPAddress? = nil {
+        didSet {
+            didSetCurrentAddress()
+        }
+    }
     
     public var cart = UserCart()
+    
+    func didSetCurrentAddress() {
+        NotificationCenter.default.post(name: .changeCurrentAddress, object: nil, userInfo: nil)
+    }
 }

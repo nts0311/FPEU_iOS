@@ -92,6 +92,16 @@
 		E786B5E728CA433E00EE1849 /* UIEncodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786B5E628CA433E00EE1849 /* UIEncodable+.swift */; };
 		E786B5E928CA4C6B00EE1849 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786B5E828CA4C6B00EE1849 /* Rx+.swift */; };
 		E786B5EB28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786B5EA28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift */; };
+		E78D04ED2906D4EF00726DDA /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D04EB2906D4EF00726DDA /* LocationListViewController.swift */; };
+		E78D04EE2906D4EF00726DDA /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78D04EC2906D4EF00726DDA /* LocationListViewController.xib */; };
+		E78D04F22906D5A100726DDA /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D04F02906D5A100726DDA /* LocationCell.swift */; };
+		E78D04F32906D5A100726DDA /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78D04F12906D5A100726DDA /* LocationCell.xib */; };
+		E78D04F52906D79800726DDA /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D04F42906D79800726DDA /* LocationListViewModel.swift */; };
+		E78D04F82906D8BC00726DDA /* GetUserLocationListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D04F72906D8BC00726DDA /* GetUserLocationListResponse.swift */; };
+		E78D05092906E27100726DDA /* CCPortalHomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D05072906E27100726DDA /* CCPortalHomeHeaderView.swift */; };
+		E78D050A2906E27100726DDA /* CCPortalHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78D05082906E27100726DDA /* CCPortalHomeHeaderView.xib */; };
+		E78D051B2906EB7300726DDA /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D05192906EB7300726DDA /* AddAddressViewController.swift */; };
+		E78D051C2906EB7300726DDA /* AddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78D051A2906EB7300726DDA /* AddAddressViewController.xib */; };
 		E78EF7A628D562FC00F50053 /* ProductInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7A428D562FC00F50053 /* ProductInfoCell.swift */; };
 		E78EF7A728D562FC00F50053 /* ProductInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EF7A528D562FC00F50053 /* ProductInfoCell.xib */; };
 		E78EF7C728D5D54200F50053 /* ProductAttributeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7C628D5D54200F50053 /* ProductAttributeHeader.swift */; };
@@ -221,6 +231,16 @@
 		E786B5E628CA433E00EE1849 /* UIEncodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEncodable+.swift"; sourceTree = "<group>"; };
 		E786B5E828CA4C6B00EE1849 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
 		E786B5EA28CA4DC500EE1849 /* GetUserCurrentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserCurrentLocationResponse.swift; sourceTree = "<group>"; };
+		E78D04EB2906D4EF00726DDA /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
+		E78D04EC2906D4EF00726DDA /* LocationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationListViewController.xib; sourceTree = "<group>"; };
+		E78D04F02906D5A100726DDA /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		E78D04F12906D5A100726DDA /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		E78D04F42906D79800726DDA /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
+		E78D04F72906D8BC00726DDA /* GetUserLocationListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserLocationListResponse.swift; sourceTree = "<group>"; };
+		E78D05072906E27100726DDA /* CCPortalHomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPortalHomeHeaderView.swift; sourceTree = "<group>"; };
+		E78D05082906E27100726DDA /* CCPortalHomeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCPortalHomeHeaderView.xib; sourceTree = "<group>"; };
+		E78D05192906EB7300726DDA /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
+		E78D051A2906EB7300726DDA /* AddAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressViewController.xib; sourceTree = "<group>"; };
 		E78EF7A428D562FC00F50053 /* ProductInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCell.swift; sourceTree = "<group>"; };
 		E78EF7A528D562FC00F50053 /* ProductInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductInfoCell.xib; sourceTree = "<group>"; };
 		E78EF7C628D5D54200F50053 /* ProductAttributeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAttributeHeader.swift; sourceTree = "<group>"; };
@@ -573,6 +593,39 @@
 			path = Repo;
 			sourceTree = "<group>";
 		};
+		E78D04EA2906D4C100726DDA /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				E78D04F62906D8A500726DDA /* DTO */,
+				E78D04EF2906D56600726DDA /* Cell */,
+				E78D04EB2906D4EF00726DDA /* LocationListViewController.swift */,
+				E78D04EC2906D4EF00726DDA /* LocationListViewController.xib */,
+				E78D04F42906D79800726DDA /* LocationListViewModel.swift */,
+				E78D05192906EB7300726DDA /* AddAddressViewController.swift */,
+				E78D051A2906EB7300726DDA /* AddAddressViewController.xib */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		E78D04EF2906D56600726DDA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E78D05072906E27100726DDA /* CCPortalHomeHeaderView.swift */,
+				E78D05082906E27100726DDA /* CCPortalHomeHeaderView.xib */,
+				E78D04F02906D5A100726DDA /* LocationCell.swift */,
+				E78D04F12906D5A100726DDA /* LocationCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E78D04F62906D8A500726DDA /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				E78D04F72906D8BC00726DDA /* GetUserLocationListResponse.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		E78EF7A328D5629600F50053 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +645,7 @@
 				E779E79B28C787A60047026B /* Base */,
 				E79D13F528A2A32F00456710 /* Auth */,
 				E779E7A028C787E90047026B /* Home */,
+				E78D04EA2906D4C100726DDA /* Locations */,
 				E715459D28CF938400B342ED /* Merchant */,
 				E7B02DA928D4DE3A00CE8D30 /* ProductDetail */,
 				E733F03128D8BB62009E5DF2 /* CartDetail */,
@@ -743,13 +797,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7C6F5E528D71FD6007382BC /* ItemNumView.xib in Resources */,
+				E78D04F32906D5A100726DDA /* LocationCell.xib in Resources */,
+				E78D050A2906E27100726DDA /* CCPortalHomeHeaderView.xib in Resources */,
 				E77ADF1F28F5D44C00B4C5F6 /* OrderTrackingViewController.xib in Resources */,
 				E7331F5B28D03DA700B07F96 /* MerchantInfoCell.xib in Resources */,
+				E78D04EE2906D4EF00726DDA /* LocationListViewController.xib in Resources */,
 				E7331F8E28D0E5B700B07F96 /* ChipCell.xib in Resources */,
 				E7372F9D28CE3FB90033E3E4 /* HomeSectionFooterView.xib in Resources */,
 				E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */,
 				E71545A128CF939E00B342ED /* MerchantViewController.xib in Resources */,
 				E7C8D7FA28CC9F6500E2DD2F /* ProductCategoryCollectionCell.xib in Resources */,
+				E78D051C2906EB7300726DDA /* AddAddressViewController.xib in Resources */,
 				E7E240AC28F800EB008E5108 /* OrderedItemCell.xib in Resources */,
 				E715459828CF7D5D00B342ED /* HomeBannerTableViewCell.xib in Resources */,
 				E7C8D80B28CDFD8E00E2DD2F /* MerchantItemCVCell.xib in Resources */,
@@ -848,6 +906,7 @@
 				E750DA7528A1730A00B3E345 /* NotificationName+.swift in Sources */,
 				E78EF7A628D562FC00F50053 /* ProductInfoCell.swift in Sources */,
 				E7DC71BC28CB177B00F4E421 /* UserRepo.swift in Sources */,
+				E78D04F82906D8BC00726DDA /* GetUserLocationListResponse.swift in Sources */,
 				E7331F8D28D0E5B700B07F96 /* ChipCell.swift in Sources */,
 				E75AD70228DA0306007D1C2F /* CheckInViewController.swift in Sources */,
 				E779E7A228C788460047026B /* HomeViewModel.swift in Sources */,
@@ -863,11 +922,13 @@
 				E786B5E728CA433E00EE1849 /* UIEncodable+.swift in Sources */,
 				E715459A28CF848000B342ED /* HomeBanner.swift in Sources */,
 				E7E240AE28F80A48008E5108 /* OrderTrackingViewModel.swift in Sources */,
+				E78D05092906E27100726DDA /* CCPortalHomeHeaderView.swift in Sources */,
 				E7372FA028CE49380033E3E4 /* MerchantItemTableViewCell.swift in Sources */,
 				E7C8D80628CDFA2D00E2DD2F /* HomeSectionCell.swift in Sources */,
 				E779E7B028C78B930047026B /* FPAddress.swift in Sources */,
 				E7B02DAF28D4E2CE00CE8D30 /* ProductDetailViewModel.swift in Sources */,
 				E750DA6D28A16A8D00B3E345 /* FPNetwork.swift in Sources */,
+				E78D04F22906D5A100726DDA /* LocationCell.swift in Sources */,
 				E779E7B228C78C9A0047026B /* ResponseCode.swift in Sources */,
 				E7C8D80128CCA4F300E2DD2F /* UICollectionView+.swift in Sources */,
 				E715459C28CF892700B342ED /* GetHomeBannerResponse.swift in Sources */,
@@ -896,6 +957,7 @@
 				E779E79D28C787CA0047026B /* FPViewController.swift in Sources */,
 				E77952D3289FC906003771BE /* HomeViewController.swift in Sources */,
 				E779E7A528C789660047026B /* GetNearbyMerchantResponse.swift in Sources */,
+				E78D04F52906D79800726DDA /* LocationListViewModel.swift in Sources */,
 				E70E28D628D21FA7001A756A /* GetMenuResponse.swift in Sources */,
 				E750DA6B28A1697B00B3E345 /* Optional+.swift in Sources */,
 				E715459228CF705E00B342ED /* TitleHeaderTableCell.swift in Sources */,
@@ -908,6 +970,7 @@
 				E71545A028CF939E00B342ED /* MerchantViewController.swift in Sources */,
 				E7BF448828C503A80025D5CE /* LoginViewModel.swift in Sources */,
 				E7E240AB28F800EB008E5108 /* OrderedItemCell.swift in Sources */,
+				E78D051B2906EB7300726DDA /* AddAddressViewController.swift in Sources */,
 				E7DC71BA28CAF96A00F4E421 /* GetHomeSectionResponse.swift in Sources */,
 				E779E79F28C787DB0047026B /* FPViewModel.swift in Sources */,
 				E745E35328F85503002F150D /* DriverInfo.swift in Sources */,
@@ -924,6 +987,7 @@
 				E7BF448B28C50B140025D5CE /* UIStoryboard+.swift in Sources */,
 				E779E7AA28C78ACC0047026B /* HomeSection.swift in Sources */,
 				E715459728CF7D5D00B342ED /* HomeBannerTableViewCell.swift in Sources */,
+				E78D04ED2906D4EF00726DDA /* LocationListViewController.swift in Sources */,
 				E78EF7CE28D60F7900F50053 /* ProductOptionCell.swift in Sources */,
 				E71D461528E33DAA00638B22 /* GetOrderCheckinInfoResponse.swift in Sources */,
 				E779E7B428C790500047026B /* FPLocation.swift in Sources */,
