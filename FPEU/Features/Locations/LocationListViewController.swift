@@ -24,6 +24,7 @@ class LocationListViewController: FPViewController {
     }
     
     private func setupView() {
+        navigationItem.title = "Danh sách địa chỉ"
         let headerNibName = String(describing: CCPortalHomeHeaderView.self)
         self.tableView.register(UINib(nibName: headerNibName, bundle: nil), forHeaderFooterViewReuseIdentifier: headerNibName)
         tableView.register(cell: LocationCell.self)

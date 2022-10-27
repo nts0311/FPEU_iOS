@@ -8,6 +8,6 @@
 import Foundation
 
 public class ServiceUrl {
-    public static let baseUrl = "http://localhost:8081"
+    public static let baseUrl = "https://82a1-222-252-98-63.ap.ngrok.io"
     public static let wssUrl = "\(baseUrl)/stomp"
 }

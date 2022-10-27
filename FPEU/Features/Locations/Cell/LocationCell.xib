@@ -19,15 +19,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpA-S6-lf4">
-                        <rect key="frame" x="16" y="16" width="320" height="48.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="16" y="8" width="320" height="64.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZU-AW-kku">
                         <rect key="frame" x="16" y="80.5" width="320" height="81.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cm-i9-RXO">
@@ -39,10 +39,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="GpA-S6-lf4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Scj-zb-vGg"/>
+                    <constraint firstItem="GpA-S6-lf4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Scj-zb-vGg"/>
                     <constraint firstAttribute="trailing" secondItem="uZU-AW-kku" secondAttribute="trailing" constant="16" id="UsC-QW-1lS"/>
                     <constraint firstItem="9cm-i9-RXO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Vt3-kD-Bmm"/>
-                    <constraint firstItem="uZU-AW-kku" firstAttribute="top" secondItem="GpA-S6-lf4" secondAttribute="bottom" constant="16" id="aP5-PE-fah"/>
+                    <constraint firstItem="uZU-AW-kku" firstAttribute="top" secondItem="GpA-S6-lf4" secondAttribute="bottom" constant="8" id="aP5-PE-fah"/>
                     <constraint firstItem="GpA-S6-lf4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="d2q-gy-XWF"/>
                     <constraint firstItem="9cm-i9-RXO" firstAttribute="top" secondItem="uZU-AW-kku" secondAttribute="bottom" constant="8" id="djG-JP-xuR"/>
                     <constraint firstItem="uZU-AW-kku" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oMg-AC-5EA"/>

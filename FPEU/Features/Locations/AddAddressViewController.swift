@@ -18,7 +18,7 @@ class AddAddressViewController: FPViewController {
     var isSelectedFromPlace = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "Thêm địa chỉ mới"
         // Do any additional setup after loading the view.
     }
     

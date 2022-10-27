@@ -90,7 +90,7 @@ class HomeViewModel: FPViewModel {
     }
     
     func hasLocalActiveOrder() -> Bool {
-        return OrderRepo.shared.orderInfo == nil
+        return OrderRepo.shared.orderInfo != nil
     }
     
     func getActiveOrder() -> Single<OrderInfo?> {

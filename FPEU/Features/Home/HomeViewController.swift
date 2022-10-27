@@ -33,16 +33,26 @@ class HomeViewController: FPViewController {
         setupViews()
         bindViewModel()
         checkActiveOrder()
+        self.viewModel.inLoadHomeInfo.accept(())
+        NotificationCenter.default.rx.notification(.changeCurrentAddress)
+            .subscribe(onNext: {_ in
+                self.setCurrentAddress()
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.loggedIn)
+            .subscribe(onNext: {_ in
+                self.viewModel.inLoadHomeInfo.accept(())
+            })
+            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         
-        if UserDataDefaults.shared.isLoggedIn {
-            viewModel.inLoadHomeInfo.accept(())
-        } else {
-           showLoginScreen()
+        if !UserDataDefaults.shared.isLoggedIn {
+            showLoginScreen()
         }
     }
     
@@ -83,7 +93,7 @@ class HomeViewController: FPViewController {
     }
     
     private func reloadData() {
-        labelAddress.text = UserRepo.shared.currentUserAddress?.toString()
+        //setCurrentAddress()
         tableView.reloadData()
     }
     
@@ -92,7 +102,7 @@ class HomeViewController: FPViewController {
             buttonOrderTracking.isHidden = false
         } else {
             viewModel.getActiveOrder().subscribe(onSuccess: {orderInfo in
-                self.buttonOrderTracking.isHidden = (orderInfo != nil)
+                self.buttonOrderTracking.isHidden = (orderInfo == nil)
             }).disposed(by: disposeBag)
         }
     }
@@ -101,7 +111,9 @@ class HomeViewController: FPViewController {
         LocationListViewController.showOn(navigationController)
     }
     
-    
+    private func setCurrentAddress() {
+        self.labelAddress.text = UserRepo.shared.currentUserAddress?.toString()
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

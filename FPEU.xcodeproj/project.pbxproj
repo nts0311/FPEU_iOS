@@ -111,6 +111,7 @@
 		E78EF7CF28D60F7900F50053 /* ProductOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EF7CD28D60F7900F50053 /* ProductOptionCell.xib */; };
 		E78EF7D128D6365500F50053 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7D028D6365500F50053 /* UIColor+.swift */; };
 		E79D13F828A2A35800456710 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D13F728A2A35800456710 /* LoginResponse.swift */; };
+		E7A1F1B2290A6C28004613A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7A1F1B1290A6C28004613A4 /* GoogleService-Info.plist */; };
 		E7B02DAC28D4DF3000CE8D30 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */; };
 		E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */; };
 		E7B02DAF28D4E2CE00CE8D30 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */; };
@@ -250,6 +251,8 @@
 		E78EF7CD28D60F7900F50053 /* ProductOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductOptionCell.xib; sourceTree = "<group>"; };
 		E78EF7D028D6365500F50053 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E79D13F728A2A35800456710 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		E7A1F1B0290A6B4C004613A4 /* FPEU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FPEU.entitlements; sourceTree = "<group>"; };
+		E7A1F1B1290A6C28004613A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
@@ -477,6 +480,8 @@
 		E77952CD289FC906003771BE /* FPEU */ = {
 			isa = PBXGroup;
 			children = (
+				E7A1F1B1290A6C28004613A4 /* GoogleService-Info.plist */,
+				E7A1F1B0290A6B4C004613A4 /* FPEU.entitlements */,
 				E786B5EC28CA57D500EE1849 /* Repo */,
 				E7BF448928C5083D0025D5CE /* UIComponent */,
 				E76CF4D428A3F6B500F04ABD /* Stomp */,
@@ -799,6 +804,7 @@
 				E7C6F5E528D71FD6007382BC /* ItemNumView.xib in Resources */,
 				E78D04F32906D5A100726DDA /* LocationCell.xib in Resources */,
 				E78D050A2906E27100726DDA /* CCPortalHomeHeaderView.xib in Resources */,
+				E7A1F1B2290A6C28004613A4 /* GoogleService-Info.plist in Resources */,
 				E77ADF1F28F5D44C00B4C5F6 /* OrderTrackingViewController.xib in Resources */,
 				E7331F5B28D03DA700B07F96 /* MerchantInfoCell.xib in Resources */,
 				E78D04EE2906D4EF00726DDA /* LocationListViewController.xib in Resources */,
@@ -1142,13 +1148,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FPEU/FPEU.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M5MM3VWR4K;
+				DEVELOPMENT_TEAM = DX476LUU93;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FPEU/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Cho phép app sử dụng vị trí của bạn để giao hàng.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Cho phép lấy vị trí để biết chính xác vị trí của bạn";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cho phép lấy vị trí để biết chính xác vị trí của bạn";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1159,7 +1168,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sonnt.FPEU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sonnt.FPEU1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1174,12 +1183,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FPEU/FPEU.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M5MM3VWR4K;
+				DEVELOPMENT_TEAM = DX476LUU93;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FPEU/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Cho phép app sử dụng vị trí của bạn để giao hàng.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Cho phép lấy vị trí để biết chính xác vị trí của bạn";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cho phép lấy vị trí để biết chính xác vị trí của bạn";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1190,7 +1202,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sonnt.FPEU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sonnt.FPEU1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

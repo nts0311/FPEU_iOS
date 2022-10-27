@@ -10,7 +10,7 @@ import Foundation
 class Endpoint {
     public static let login = "/auth/login"
     public static let homeInfo = "/enduser/home/info"
-
+    public static let updateFcmToken = "/auth/update-fcm-token"
 
     public static let getCategories = "/shared/productCategory/list"
     public static let getHomeSection = "/enduser/home/section"
