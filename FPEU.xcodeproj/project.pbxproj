@@ -112,6 +112,7 @@
 		E78EF7D128D6365500F50053 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EF7D028D6365500F50053 /* UIColor+.swift */; };
 		E79D13F828A2A35800456710 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D13F728A2A35800456710 /* LoginResponse.swift */; };
 		E7A1F1B2290A6C28004613A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7A1F1B1290A6C28004613A4 /* GoogleService-Info.plist */; };
+		E7A38C47290EE2B10067D412 /* AppCommonProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A38C46290EE2B10067D412 /* AppCommonProcessing.swift */; };
 		E7B02DAC28D4DF3000CE8D30 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */; };
 		E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */; };
 		E7B02DAF28D4E2CE00CE8D30 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */; };
@@ -253,6 +254,7 @@
 		E79D13F728A2A35800456710 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		E7A1F1B0290A6B4C004613A4 /* FPEU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FPEU.entitlements; sourceTree = "<group>"; };
 		E7A1F1B1290A6C28004613A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E7A38C46290EE2B10067D412 /* AppCommonProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommonProcessing.swift; sourceTree = "<group>"; };
 		E7B02DAA28D4DF3000CE8D30 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E7B02DAB28D4DF3000CE8D30 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		E7B02DAE28D4E2CE00CE8D30 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				E77952EC289FDD83003771BE /* Extensions */,
 				E79D13F428A2A32300456710 /* Features */,
 				E77952CE289FC906003771BE /* AppDelegate.swift */,
+				E7A38C46290EE2B10067D412 /* AppCommonProcessing.swift */,
 				E77952D0289FC906003771BE /* SceneDelegate.swift */,
 				E77952D7289FC908003771BE /* Assets.xcassets */,
 				E77952D9289FC908003771BE /* LaunchScreen.storyboard */,
@@ -997,6 +1000,7 @@
 				E78EF7CE28D60F7900F50053 /* ProductOptionCell.swift in Sources */,
 				E71D461528E33DAA00638B22 /* GetOrderCheckinInfoResponse.swift in Sources */,
 				E779E7B428C790500047026B /* FPLocation.swift in Sources */,
+				E7A38C47290EE2B10067D412 /* AppCommonProcessing.swift in Sources */,
 				E77952F0289FDF51003771BE /* UITableView+.swift in Sources */,
 				E77952D1289FC906003771BE /* SceneDelegate.swift in Sources */,
 				E78EF7CB28D5EA8C00F50053 /* UserCart.swift in Sources */,

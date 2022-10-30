@@ -33,44 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Messaging.messaging().delegate = self
         
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: { _, _ in }
-            )
-        } else {
-            let settings: UIUserNotificationSettings =
-            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        
+        let settings: UIUserNotificationSettings =
+        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
-        NotificationCenter.default.rx.notification(.sessionExpired)
-            .debounce(RxTimeInterval.milliseconds(200), scheduler: globalScheduler)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {_ in
-                UserDataDefaults.shared.jwtToken = nil
-                UserDataDefaults.shared.isLoggedIn = false
-                UIViewController.topMostViewController()?.showLoginScreen()
-            })
-            .disposed(by: disposeBag)
-        
         StompMessageHub.shared
-        NotificationCenter.default.rx.notification(.loggedIn)
-            .debounce(RxTimeInterval.milliseconds(200), scheduler: globalScheduler)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {_ in
-                StompMessageHub.shared
-                if (self.fcmToken != "") {
-                    self.uploadFcmToken(fcmToken: self.fcmToken)
-                }
-            })
-            .disposed(by: disposeBag)
+        registerNotificationListener()
         
         return true
     }
@@ -116,48 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-// [START ios_10_message_handling]
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    // Receive displayed notifications for iOS 10 devices.
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification) async
-    -> UNNotificationPresentationOptions {
-        let userInfo = notification.request.content.userInfo
-        
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-        // [START_EXCLUDE]
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        // [END_EXCLUDE]
-        // Print full message.
-        print(userInfo)
-        
-        // Change this to your preferred presentation option
-        return [[.alert, .sound]]
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse) async {
-        let userInfo = response.notification.request.content.userInfo
-        
-        // [START_EXCLUDE]
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        // [END_EXCLUDE]
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-        // Print full message.
-        print(userInfo)
-    }
-}
-
-// [END ios_10_message_handling]
-
 extension AppDelegate: MessagingDelegate {
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
@@ -165,21 +92,43 @@ extension AppDelegate: MessagingDelegate {
         
         if let fcmToken = fcmToken {
             self.fcmToken = fcmToken
-            uploadFcmToken(fcmToken: fcmToken)
+            AppCommonProcessing.shared.uploadFcmToken(fcmToken: fcmToken)
         }
         
     }
     
     // [END refresh_token]
-    
-    func uploadFcmToken(fcmToken: String) {
-        FPNetwork.post(endpoint: Endpoint.updateFcmToken, params: ["fcmToken" : fcmToken]) { data in
-            
-        } failure: { code, message in
-            
-        } timeout: { message in
-            
-        }
-    }
-    
+
 }
+
+extension AppDelegate {
+    func registerNotificationListener() {
+        NotificationCenter.default.rx.notification(.sessionExpired)
+            .debounce(RxTimeInterval.milliseconds(200), scheduler: globalScheduler)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {_ in
+                UserDataDefaults.shared.jwtToken = nil
+                UserDataDefaults.shared.isLoggedIn = false
+                UIViewController.topMostViewController()?.showLoginScreen()
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.loggedIn)
+            .debounce(RxTimeInterval.milliseconds(200), scheduler: globalScheduler)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {_ in
+                if (self.fcmToken != "") {
+                    AppCommonProcessing.shared.uploadFcmToken(fcmToken: self.fcmToken)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.orderCanceled)
+            .subscribe(onNext: {noti in
+                let reason = noti.userInfo?["reason"] as? String ?? ""
+                AppCommonProcessing.shared.onCurrentOrderCanceled(reason: reason)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
