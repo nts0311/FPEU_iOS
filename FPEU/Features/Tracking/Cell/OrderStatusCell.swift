@@ -30,7 +30,10 @@ class OrderStatusCell: UITableViewCell {
             setStateRow1(isEnabled: false)
             setStateRow2(isEnabled: false)
             setStateRow3(isEnabled: true)
-        default: ()
+        default:
+            setStateRow1(isEnabled: false)
+            setStateRow2(isEnabled: false)
+            setStateRow3(isEnabled: false)
         }
     }
     

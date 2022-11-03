@@ -17,7 +17,7 @@ class AppCommonProcessing {
         
         topVc.showAlertDialog(title: "Thông báo", message: "Rất tiếc, đơn hàng của bạn đã bị huỷ. Lý do: \(reason). Hãy đặt đơn mới bạn nhé!", firstActionTitle: "OK", firstAction: {
             if (topVc is OrderTrackingViewController) {
-                topVc.navigationController?.popViewController(animated: true)
+                topVc.navigationController?.popToRootViewController(animated: true)
             }
         })
     }

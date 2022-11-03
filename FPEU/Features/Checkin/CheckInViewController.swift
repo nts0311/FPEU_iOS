@@ -52,6 +52,7 @@ class CheckInViewController: FPViewController {
         
         viewModel.outPlaceOrderSuccess.asObservable()
             .subscribe(onNext: {
+                UserRepo.shared.cart.clearCart()
                 OrderTrackingViewController.showOn(self.navigationController)
             })
             .disposed(by: disposeBag)

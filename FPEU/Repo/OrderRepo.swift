@@ -54,8 +54,8 @@ class OrderRepo {
         case .foundDriver:
             self.setDriverInfo(message: message)
         case .cancelOrder:
-            let reason: String = message.getBody() ?? ""
-            NotificationCenter.default.post(name: .orderCanceled, object: nil, userInfo: ["reason": reason])
+            let message: CanceledOrderMessage? = message.getBody()
+            NotificationCenter.default.post(name: .orderCanceled, object: nil, userInfo: ["reason": message?.reason ?? ""])
         default: ()
         }
     }
@@ -87,4 +87,9 @@ extension OrderRepo {
                 $0?.orderInfo
             }
     }
+}
+
+struct CanceledOrderMessage: Decodable {
+    let id: Int
+    let reason: String
 }

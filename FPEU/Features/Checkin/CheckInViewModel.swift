@@ -34,6 +34,7 @@ class CheckinViewModel: FPViewModel {
     
     func changeNumOf(product: ProductCartItem, newNum: Int) {
         cart.changeNum(of: product.product, newNum: newNum)
+        getOrderCheckinInfo()
     }
     
     override init() {

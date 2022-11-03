@@ -44,23 +44,35 @@ struct WSMessage {
 
 class StompMessageHub {
     
-    let socketClient = StompClientLib()
+    var socketClient = StompClientLib()
+    let disposeBag = DisposeBag()
     
     private var endpointListenerMap = [String:PublishSubject<WSMessage>]()
     private var sharedObservablerMap = [String:Observable<WSMessage>]()
     
+    private var didSuccessConnect = false
+    
     private init() {
+        NotificationCenter.default.rx.notification(.loggedIn)
+            .subscribe(onNext: {_ in
+                if (!self.didSuccessConnect) {
+                    self.socketClient.disconnect()
+                    self.socketClient = StompClientLib()
+                    self.connectToSocket()
+                }
+            })
+            .disposed(by: disposeBag)
         connectToSocket()
     }
     
     func connectToSocket() {
-        if (socketClient.isConnected()) {
-            return
-        }
+//        if (socketClient.isConnected()) {
+//            return
+//        }
         
         let url = NSURL(string: ServiceUrl.wssUrl)!
         let jwt = UserDataDefaults.shared.jwtToken ?? ""
-        socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL), delegate: self, connectionHeaders: ["Authorization" : "Bearer \(jwt)"])
+        socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL), delegate: self, connectionHeaders: ["Authorization" : "Bearer \(jwt)", "heart-beat": "0,10000"])
     }
     
     public func subscribe(to endpoint: String) -> Observable<WSMessage> {
@@ -97,11 +109,11 @@ extension StompMessageHub: StompClientLibDelegate {
     }
     
     func stompClientDidDisconnect(client: StompClientLib!) {
-        
+        self.didSuccessConnect = false
     }
     
     func stompClientDidConnect(client: StompClientLib!) {
-        
+        self.didSuccessConnect = true
     }
     
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
