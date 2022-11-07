@@ -12,8 +12,6 @@ import StompClientLib
 import GoogleMaps
 
 class HomeViewController: FPViewController {
-
-    
     @IBOutlet weak var labelAddress: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonOrderTracking: UIButton!
@@ -92,6 +90,10 @@ class HomeViewController: FPViewController {
             }).disposed(by: disposeBag)
     }
     
+    @IBAction func searchMerchantTapped(_ sender: Any) {
+        MerchantListViewController.showOn(navigationController, with: nil)
+    }
+    
     private func reloadData() {
         //setCurrentAddress()
         tableView.reloadData()
@@ -150,7 +152,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let categoriesCell: ProductCategoryCollectionCell = tableView.dequeueReusableCell(at: indexPath)
             categoriesCell.listCategory = categories
             categoriesCell.didSelectCategory = {category in
-                
+                MerchantListViewController.showOn(self.navigationController, with: category.id)
             }
             return categoriesCell
             
@@ -158,9 +160,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell: HomeSectionCell = tableView.dequeueReusableCell(at: indexPath)
             cell.homeSection = homeSections[indexPath.row]
             cell.diSelectMerchant = {restaurant in
-                let vc = MerchantViewController.initFromNib()
-                vc.merchantItem = restaurant
-                self.navigationController?.pushViewController(vc, animated: true)
+                MerchantViewController.showOn(self.navigationController, with: restaurant)
             }
             return cell
             
@@ -239,9 +239,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch HomeTableViewSection.init(rawValue: indexPath.section) {
             
         case .nearbyRestaurant:
-            let vc = MerchantViewController.initFromNib()
-            vc.merchantItem = nearbyRestaurants[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
+            MerchantViewController.showOn(navigationController, with: nearbyRestaurants[indexPath.row])
         default:
             ()
         }

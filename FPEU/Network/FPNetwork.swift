@@ -11,7 +11,7 @@ import RxSwift
 
 public class FPNetwork {
     
-    private static let isDebug = false
+    private static let isDebug = true
     
     //public static let networkErrorMessage = "Có lỗi xảy ra, vui lòng thử lại sau."
     private static let timeoutErrorMessage = "Request timeout! Please try again later."

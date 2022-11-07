@@ -32,5 +32,7 @@ class Endpoint {
     
     public static let locationList = "/enduser/info/location-list"
     public static let addLocation = "/enduser/info/add-location"
+    
+    public static let findMerchant = "/enduser/home/find-merchants"
 }
 

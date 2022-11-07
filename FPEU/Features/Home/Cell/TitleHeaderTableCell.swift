@@ -19,6 +19,7 @@ class TitleHeaderTableCell: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         contentView.backgroundColor = .white
+        labelHeader.backgroundColor = .white
     }
     
     func setText(_ text: String) {

@@ -241,6 +241,14 @@ extension MerchantViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension MerchantViewController {
+    public static func showOn(_ navController: UINavigationController?, with merchant: MerchantItem) {
+        let vc = MerchantViewController()
+        vc.merchantItem = merchant
+        navController?.pushViewController(vc, animated: true)
+    }
+}
+
 enum MerchantTableViewSection: Int {
     case info = 0
     case product = 1

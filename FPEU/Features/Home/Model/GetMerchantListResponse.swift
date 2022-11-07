@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetNearbyMerchantResponse: Decodable {
+struct GetMerchantListResponse: Decodable {
     var httpStatus: Int?
     var code: String?
     var msg: String?

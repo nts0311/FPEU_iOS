@@ -89,7 +89,7 @@
                                                     <constraint firstItem="iSI-VB-jxW" firstAttribute="centerY" secondItem="UEn-LQ-LVR" secondAttribute="centerY" id="qSp-CA-OjO"/>
                                                 </constraints>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxd-9q-pfC">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxd-9q-pfC" customClass="UIControl">
                                                 <rect key="frame" x="0.0" y="35" width="382" height="30"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EPI-M8-nfq">
@@ -123,6 +123,9 @@
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="searchMerchantTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FLn-gT-gTd"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                     </stackView>
