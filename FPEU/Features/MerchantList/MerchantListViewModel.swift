@@ -14,7 +14,7 @@ class MerchantListViewModel: FPViewModel {
     private let triggerLoadMerchant = PublishRelay<Void>()
     
     var searchKey: String?
-    var currentPage = 0
+    var currentPage = -1
     let pageSize = 10
     var categoryId: Int?
     var lastGetCount = 0

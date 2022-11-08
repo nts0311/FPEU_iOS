@@ -62,10 +62,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="59A-WJ-PMU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                    <rect key="frame" x="8" y="0.0" width="398" height="96"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kpb-nQ-PBd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="48"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poL-Lf-Y3M">
                                                     <rect key="frame" x="0.0" y="9" width="30" height="30"/>
@@ -77,7 +77,7 @@
                                                     <state key="normal" image="ic_back"/>
                                                 </button>
                                                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Tìm kiếm món ăn" translatesAutoresizingMaskIntoConstraints="NO" id="1qm-9K-oJw">
-                                                    <rect key="frame" x="30" y="4" width="384" height="40"/>
+                                                    <rect key="frame" x="30" y="4" width="368" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="ha4-9g-c59"/>
                                                     </constraints>
@@ -90,10 +90,10 @@
                                             </constraints>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVZ-a2-KFW">
-                                            <rect key="frame" x="0.0" y="48" width="414" height="48"/>
+                                            <rect key="frame" x="0.0" y="48" width="398" height="48"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fk0-4n-8ev" customClass="ChipCollectionView" customModule="FPEU" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="0.0" width="398" height="40"/>
+                                                    <rect key="frame" x="8" y="0.0" width="382" height="40"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Xec-zN-STF"/>
@@ -129,8 +129,8 @@
                             <constraints>
                                 <constraint firstItem="59A-WJ-PMU" firstAttribute="top" secondItem="tto-tP-KKD" secondAttribute="top" id="PSg-Kg-79Z"/>
                                 <constraint firstAttribute="bottom" secondItem="59A-WJ-PMU" secondAttribute="bottom" id="aDw-WF-7Tm"/>
-                                <constraint firstAttribute="trailing" secondItem="59A-WJ-PMU" secondAttribute="trailing" id="vDd-g5-mcw"/>
-                                <constraint firstItem="59A-WJ-PMU" firstAttribute="leading" secondItem="tto-tP-KKD" secondAttribute="leading" id="vHX-ht-aC2"/>
+                                <constraint firstAttribute="trailing" secondItem="59A-WJ-PMU" secondAttribute="trailing" constant="8" id="vDd-g5-mcw"/>
+                                <constraint firstItem="59A-WJ-PMU" firstAttribute="leading" secondItem="tto-tP-KKD" secondAttribute="leading" constant="8" id="vHX-ht-aC2"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>

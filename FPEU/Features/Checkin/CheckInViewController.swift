@@ -58,6 +58,13 @@ class CheckInViewController: FPViewController {
             .disposed(by: disposeBag)
         
         placeOrderButton.rx.tap.bind(to: viewModel.inButtonPlaceOrderTapped).disposed(by: disposeBag)
+        
+        viewModel.errorDescription.asObservable()
+            .subscribe(onNext:{ msg in
+                self.showAlertDialog(title: "Thông báo", message: msg)
+            })
+            .disposed(by: disposeBag)
+
     }
     
     private func reloadData() {

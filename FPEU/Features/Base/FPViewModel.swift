@@ -12,7 +12,7 @@ import RxRelay
 class FPViewModel {
     public let disposeBag = DisposeBag()
     
-    public let errorDescription = BehaviorSubject<String>(value: "")
+    public let errorDescription = PublishRelay<String>()
     
     init() {
         

@@ -51,7 +51,7 @@ class LoginViewModel: FPViewModel {
     
     private func processResponse(_ loginResponse: LoginResponse?) -> Bool {
         guard let loginResponse = loginResponse else {
-            self.errorDescription.onNext("Có lỗi xảy ra, vui lòng thử lại sau.")
+            self.errorDescription.accept("Có lỗi xảy ra, vui lòng thử lại sau.")
             return false
         }
         

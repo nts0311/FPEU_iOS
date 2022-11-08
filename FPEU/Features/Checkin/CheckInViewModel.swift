@@ -51,9 +51,18 @@ class CheckinViewModel: FPViewModel {
             ]
             
             return FPNetwork.singlePost(CreateNewOrderResponse.self, endpoint: Endpoint.createOrder, params: params)
-                .catchAndReturn(CreateNewOrderResponse())
+                //.catchAndReturn(CreateNewOrderResponse())
         }
-        .filter {$0?.code == successCode && $0?.orderId != nil}
+        .do(onNext: {respone in
+            if respone?.code != "0"  {
+                if let msg = respone?.msg, msg.isNotEmpty {
+                    self.errorDescription.accept(msg )
+                }
+            }
+        })
+        .filter {
+            $0?.code == successCode && $0?.orderId != nil
+        }
         .asObservable()
         .mapToVoid()
         .bind(to: outPlaceOrderSuccess)
