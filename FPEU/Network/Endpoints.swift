@@ -34,5 +34,7 @@ class Endpoint {
     public static let addLocation = "/enduser/info/add-location"
     
     public static let findMerchant = "/enduser/home/find-merchants"
+    
+    public static let wsDriverLocation = "/users/ws/eu/driverLocation"
 }
 

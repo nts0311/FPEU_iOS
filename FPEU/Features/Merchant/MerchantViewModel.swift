@@ -18,7 +18,7 @@ class MerchantViewModel: FPViewModel {
     var merchantItem: MerchantItem!
     
     var menuList: [MerchantMenu] = []
-    var products: [MerchantProduct] = []
+    //var products: [MerchantProduct] = []
     var sectionedProductList: [Int:[MerchantProduct]] = [:]
     
     override init() {
@@ -52,14 +52,7 @@ class MerchantViewModel: FPViewModel {
     }
     
     private func processApiResult(menus: [MerchantMenu], products: [MerchantProduct]) {
-        self.products.removeAll()
-        
         sectionedProductList = Dictionary(grouping: products, by: { $0.tagId ?? -1 })
-        
-        for (_, products) in sectionedProductList {
-            self.products.append(contentsOf: products)
-        }
-        
         self.menuList = menus
     }
     

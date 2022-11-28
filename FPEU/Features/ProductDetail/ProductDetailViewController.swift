@@ -44,6 +44,8 @@ class ProductDetailViewController: FPViewController {
     }
 
     private func setupViews() {
+        
+        productImageView.sd_setImage(with: product.imageUrl.url, placeholderImage: UIImage(named: "dish"))
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -65,6 +67,7 @@ class ProductDetailViewController: FPViewController {
     }
     
     private func bindViewModel() {
+        
         viewModel.canAddToCard.asObservable()
             .bind(to: addToCartButton.rx.isEnabled)
             .disposed(by: disposeBag)

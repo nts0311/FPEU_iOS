@@ -18,6 +18,9 @@
 		E70E28D228D21E48001A756A /* MerchantProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70E28D128D21E48001A756A /* MerchantProduct.swift */; };
 		E70E28D628D21FA7001A756A /* GetMenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70E28D528D21FA7001A756A /* GetMenuResponse.swift */; };
 		E70E28D828D21FB1001A756A /* GetProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70E28D728D21FB1001A756A /* GetProductResponse.swift */; };
+		E7117FBE29350B65009C4D68 /* DriverTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7117FBC29350B65009C4D68 /* DriverTrackingViewController.swift */; };
+		E7117FBF29350B65009C4D68 /* DriverTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7117FBD29350B65009C4D68 /* DriverTrackingViewController.xib */; };
+		E7117FC129350B74009C4D68 /* DriverTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7117FC029350B74009C4D68 /* DriverTrackingViewModel.swift */; };
 		E715459228CF705E00B342ED /* TitleHeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E715459128CF705E00B342ED /* TitleHeaderTableCell.swift */; };
 		E715459428CF708A00B342ED /* TitleHeaderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715459328CF708A00B342ED /* TitleHeaderTableCell.xib */; };
 		E715459728CF7D5D00B342ED /* HomeBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E715459528CF7D5D00B342ED /* HomeBannerTableViewCell.swift */; };
@@ -160,6 +163,9 @@
 		E70E28D128D21E48001A756A /* MerchantProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantProduct.swift; sourceTree = "<group>"; };
 		E70E28D528D21FA7001A756A /* GetMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMenuResponse.swift; sourceTree = "<group>"; };
 		E70E28D728D21FB1001A756A /* GetProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductResponse.swift; sourceTree = "<group>"; };
+		E7117FBC29350B65009C4D68 /* DriverTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTrackingViewController.swift; sourceTree = "<group>"; };
+		E7117FBD29350B65009C4D68 /* DriverTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverTrackingViewController.xib; sourceTree = "<group>"; };
+		E7117FC029350B74009C4D68 /* DriverTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTrackingViewModel.swift; sourceTree = "<group>"; };
 		E715459128CF705E00B342ED /* TitleHeaderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderTableCell.swift; sourceTree = "<group>"; };
 		E715459328CF708A00B342ED /* TitleHeaderTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleHeaderTableCell.xib; sourceTree = "<group>"; };
 		E715459528CF7D5D00B342ED /* HomeBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerTableViewCell.swift; sourceTree = "<group>"; };
@@ -325,6 +331,16 @@
 				E70E28D728D21FB1001A756A /* GetProductResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		E7117FBB29350AB5009C4D68 /* DriverTracking */ = {
+			isa = PBXGroup;
+			children = (
+				E7117FBC29350B65009C4D68 /* DriverTrackingViewController.swift */,
+				E7117FBD29350B65009C4D68 /* DriverTrackingViewController.xib */,
+				E7117FC029350B74009C4D68 /* DriverTrackingViewModel.swift */,
+			);
+			path = DriverTracking;
 			sourceTree = "<group>";
 		};
 		E715459D28CF938400B342ED /* Merchant */ = {
@@ -676,6 +692,7 @@
 				E733F03128D8BB62009E5DF2 /* CartDetail */,
 				E733F03E28D8D15D009E5DF2 /* Checkin */,
 				E77ADF1B28F5D19500B4C5F6 /* Tracking */,
+				E7117FBB29350AB5009C4D68 /* DriverTracking */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -833,6 +850,7 @@
 				E7B02DAD28D4DF3000CE8D30 /* ProductDetailViewController.xib in Resources */,
 				E71545A128CF939E00B342ED /* MerchantViewController.xib in Resources */,
 				E7C8D7FA28CC9F6500E2DD2F /* ProductCategoryCollectionCell.xib in Resources */,
+				E7117FBF29350B65009C4D68 /* DriverTrackingViewController.xib in Resources */,
 				E78D051C2906EB7300726DDA /* AddAddressViewController.xib in Resources */,
 				E7E240AC28F800EB008E5108 /* OrderedItemCell.xib in Resources */,
 				E715459828CF7D5D00B342ED /* HomeBannerTableViewCell.xib in Resources */,
@@ -970,6 +988,7 @@
 				E7C8D80328CCA67D00E2DD2F /* Draft.swift in Sources */,
 				E733F03828D8C12A009E5DF2 /* CartDetailViewModel.swift in Sources */,
 				E779E7A828C789E30047026B /* ProductCategory.swift in Sources */,
+				E7117FBE29350B65009C4D68 /* DriverTrackingViewController.swift in Sources */,
 				E7372FA328CE575A0033E3E4 /* Double+.swift in Sources */,
 				E7DC71B828CAF90D00F4E421 /* GetCategoriesResponse.swift in Sources */,
 				E72AD02F28D37913002484FF /* GPSUtils.swift in Sources */,
@@ -1005,6 +1024,7 @@
 				E750DA6F28A16CFA00B3E345 /* ServiceUrl.swift in Sources */,
 				E7872F352918F9DE003A6B0D /* MerchantListViewModel.swift in Sources */,
 				E7C8D80A28CDFD8E00E2DD2F /* MerchantItemCVCell.swift in Sources */,
+				E7117FC129350B74009C4D68 /* DriverTrackingViewModel.swift in Sources */,
 				E7BF448628C503980025D5CE /* LoginViewController.swift in Sources */,
 				E7872F322918F8C0003A6B0D /* MerchantListViewController.swift in Sources */,
 				E7BF449728C50DA30025D5CE /* UIApplication+.swift in Sources */,

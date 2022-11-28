@@ -11,6 +11,7 @@ class ProductItemCell: UITableViewCell {
     @IBOutlet weak var labelProductName: UILabel!
     @IBOutlet weak var labelProductPrice: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
+    @IBOutlet weak var notAvailableLabel: UILabel!
     
     
     var product: MerchantProduct! {
@@ -23,6 +24,8 @@ class ProductItemCell: UITableViewCell {
         labelProductPrice.text = "\(price)"
         imageProduct.sd_setImage(with: product.imageUrl.url, placeholderImage: UIImage(named: "dish"))
         
-        
+       
+        contentView.alpha = product.isAvailable ? 1 : 0.5
+        notAvailableLabel.isHidden = product.isAvailable
     }
 }

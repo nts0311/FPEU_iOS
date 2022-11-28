@@ -21,6 +21,8 @@ class DeliveringDetailCell: UITableViewCell {
         didSet { initData() }
     }
     
+    var orderTrackingTapped: () -> Void = {}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cardView.layer.borderWidth = 1.0
@@ -48,5 +50,10 @@ class DeliveringDetailCell: UITableViewCell {
         }
         
     }
+    
+    @IBAction func driverTrackingTapped(_ sender: Any) {
+        orderTrackingTapped()
+    }
+    
     
 }

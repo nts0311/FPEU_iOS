@@ -19,6 +19,10 @@ struct MerchantProduct: Decodable {
     var tagId: Int?
     var attributes: [ProductAttribute]
     
+    var isAvailable: Bool {
+        return status == "AVAILABLE"
+    }
+    
     func getPrice() -> Double {
         return price ?? 0.0
     }

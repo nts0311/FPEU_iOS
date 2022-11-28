@@ -82,6 +82,9 @@ extension OrderTrackingViewController: UITableViewDataSource {
         case .deliveryDetail:
             let cell: DeliveringDetailCell = tableView.dequeueReusableCell(at: indexPath)
             cell.orderInfo = viewModel.orderInfo
+            cell.orderTrackingTapped = {
+                DriverTrackingViewController.showOn(self.navigationController)
+            }
             return cell
         case .orderedItemList:
             let cell: OrderdItemsCell = tableView.dequeueReusableCell(at: indexPath)
