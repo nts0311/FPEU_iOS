@@ -13,6 +13,9 @@
 		E70313DE28F7BFE800058081 /* DeliveringDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70313DC28F7BFE800058081 /* DeliveringDetailCell.xib */; };
 		E70313E128F7DA0700058081 /* OrderdItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70313DF28F7DA0700058081 /* OrderdItemsCell.swift */; };
 		E70313E228F7DA0700058081 /* OrderdItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70313E028F7DA0700058081 /* OrderdItemsCell.xib */; };
+		E704DCB0294A3B250071CD60 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E704DCAE294A3B250071CD60 /* RatingViewController.swift */; };
+		E704DCB1294A3B250071CD60 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E704DCAF294A3B250071CD60 /* RatingViewController.xib */; };
+		E704DCB3294A41320071CD60 /* RatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E704DCB2294A41320071CD60 /* RatingViewModel.swift */; };
 		E70E28CE28D21B98001A756A /* MerchantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70E28CD28D21B98001A756A /* MerchantViewModel.swift */; };
 		E70E28D028D21DAE001A756A /* MerchantMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70E28CF28D21DAE001A756A /* MerchantMenu.swift */; };
 		E70E28D228D21E48001A756A /* MerchantProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70E28D128D21E48001A756A /* MerchantProduct.swift */; };
@@ -158,6 +161,9 @@
 		E70313DC28F7BFE800058081 /* DeliveringDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveringDetailCell.xib; sourceTree = "<group>"; };
 		E70313DF28F7DA0700058081 /* OrderdItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderdItemsCell.swift; sourceTree = "<group>"; };
 		E70313E028F7DA0700058081 /* OrderdItemsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderdItemsCell.xib; sourceTree = "<group>"; };
+		E704DCAE294A3B250071CD60 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		E704DCAF294A3B250071CD60 /* RatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
+		E704DCB2294A41320071CD60 /* RatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewModel.swift; sourceTree = "<group>"; };
 		E70E28CD28D21B98001A756A /* MerchantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewModel.swift; sourceTree = "<group>"; };
 		E70E28CF28D21DAE001A756A /* MerchantMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantMenu.swift; sourceTree = "<group>"; };
 		E70E28D128D21E48001A756A /* MerchantProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantProduct.swift; sourceTree = "<group>"; };
@@ -322,6 +328,16 @@
 				D41C2D0B5E0DA5ED4684FF77 /* Pods_FPEU.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E704DCAD294A39DF0071CD60 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				E704DCAE294A3B250071CD60 /* RatingViewController.swift */,
+				E704DCAF294A3B250071CD60 /* RatingViewController.xib */,
+				E704DCB2294A41320071CD60 /* RatingViewModel.swift */,
+			);
+			path = Rating;
 			sourceTree = "<group>";
 		};
 		E70E28D328D21F52001A756A /* Response */ = {
@@ -693,6 +709,7 @@
 				E733F03E28D8D15D009E5DF2 /* Checkin */,
 				E77ADF1B28F5D19500B4C5F6 /* Tracking */,
 				E7117FBB29350AB5009C4D68 /* DriverTracking */,
+				E704DCAD294A39DF0071CD60 /* Rating */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -857,6 +874,7 @@
 				E7C8D80B28CDFD8E00E2DD2F /* MerchantItemCVCell.xib in Resources */,
 				E78EF7CF28D60F7900F50053 /* ProductOptionCell.xib in Resources */,
 				E715459428CF708A00B342ED /* TitleHeaderTableCell.xib in Resources */,
+				E704DCB1294A3B250071CD60 /* RatingViewController.xib in Resources */,
 				E7BF448428C503410025D5CE /* Auth.storyboard in Resources */,
 				E7872F332918F8C0003A6B0D /* MerchantListViewController.xib in Resources */,
 				E7C8D80728CDFA2D00E2DD2F /* HomeSectionCell.xib in Resources */,
@@ -1037,8 +1055,10 @@
 				E779E7AA28C78ACC0047026B /* HomeSection.swift in Sources */,
 				E715459728CF7D5D00B342ED /* HomeBannerTableViewCell.swift in Sources */,
 				E78D04ED2906D4EF00726DDA /* LocationListViewController.swift in Sources */,
+				E704DCB0294A3B250071CD60 /* RatingViewController.swift in Sources */,
 				E78EF7CE28D60F7900F50053 /* ProductOptionCell.swift in Sources */,
 				E71D461528E33DAA00638B22 /* GetOrderCheckinInfoResponse.swift in Sources */,
+				E704DCB3294A41320071CD60 /* RatingViewModel.swift in Sources */,
 				E779E7B428C790500047026B /* FPLocation.swift in Sources */,
 				E7A38C47290EE2B10067D412 /* AppCommonProcessing.swift in Sources */,
 				E77952F0289FDF51003771BE /* UITableView+.swift in Sources */,

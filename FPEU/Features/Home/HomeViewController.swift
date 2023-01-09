@@ -37,12 +37,14 @@ class HomeViewController: FPViewController {
                 self.setCurrentAddress()
             })
             .disposed(by: disposeBag)
-        
+
         NotificationCenter.default.rx.notification(.loggedIn)
             .subscribe(onNext: {_ in
                 self.viewModel.inLoadHomeInfo.accept(())
             })
             .disposed(by: disposeBag)
+        
+        //navigationController?.pushViewController(RatingViewController.initFromNib(), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

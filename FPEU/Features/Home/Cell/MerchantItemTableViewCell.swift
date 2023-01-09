@@ -12,7 +12,7 @@ class MerchantItemTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var merchantImageView: UIImageView!
     @IBOutlet private weak var labelName: UILabel!
-    @IBOutlet private weak var subTitle: UILabel!
+    //@IBOutlet private weak var subTitle: UILabel!
     @IBOutlet private weak var labelStar: UILabel!
     @IBOutlet private weak var labelOrderNum: UILabel!
     @IBOutlet private weak var labelDistance: UILabel!
@@ -24,10 +24,10 @@ class MerchantItemTableViewCell: UITableViewCell {
     private func initData() {
         merchantImageView.sd_setImage(with: URL(string: merchantItem.imageUrl ?? ""), placeholderImage: UIImage(named: "placeholder_restaurant"))
         labelName.text = merchantItem.name ?? ""
-        subTitle.text = merchantItem.subTitle
+        //subTitle.text = merchantItem.subTitle
         
         if let starNum = merchantItem.numStar, let numOrder = merchantItem.numOrder {
-            labelStar.text = "\(starNum)"
+            labelStar.text = "\(String(format: "%.1f", starNum))"
             labelOrderNum.text = "(\(numOrder))"
         } else {
             labelStar.text = "--"

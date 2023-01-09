@@ -13,6 +13,7 @@ class AddAddressViewController: FPViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapContainer: UIView!
     
+    @IBOutlet weak var nameTextView: UITextField!
     var mapView: GMSMapView? = nil
     var currentAddress: FPAddress? = nil
     var isSelectedFromPlace = true
@@ -43,6 +44,7 @@ class AddAddressViewController: FPViewController {
     
     
     @IBAction func addAddressTapped(_ sender: Any) {
+        currentAddress?.name = nameTextView.text
         FPNetwork.singlePost(FPBaseResponse.self, endpoint: Endpoint.addLocation, params: currentAddress.dictionary ?? [:])
             .catchErrorJustComplete()
             .subscribe(onNext: {_ in

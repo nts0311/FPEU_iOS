@@ -55,7 +55,10 @@ class OrderTrackingViewController: FPViewController {
 
     func onOrderSuccessed() {
         showAlertDialog(title: "Hoàn thành", message: "Đơn hàng đã hoàn thành! Hãy đánh giá trải nghiệm của bạn nhé!", firstActionTitle: "Đánh giá", secondActionTitle: "Về trang chủ", firstAction: {
-            
+            let vc = RatingViewController.initFromNib()
+            vc.orderId = OrderRepo.shared.orderInfo?.orderId ?? 0
+            self.navigationController?.pushViewController(vc, animated: true)
+            OrderRepo.shared.orderInfo = nil
         }, secondAction: {
             OrderRepo.shared.orderInfo = nil
             self.navigationController?.popToRootViewController(animated: true)

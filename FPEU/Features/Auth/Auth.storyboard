@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +23,12 @@
                                     <constraint firstAttribute="height" constant="300" id="5sx-sd-GJ9"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foodpee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U95-T6-Syt">
+                                <rect key="frame" x="116" y="121.5" width="182.5" height="57.5"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="48"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bP-iQ-bjx">
                                 <rect key="frame" x="0.0" y="292" width="414" height="570"/>
                                 <subviews>
@@ -232,7 +238,9 @@
                         <viewLayoutGuide key="safeArea" id="km9-Cg-O6s"/>
                         <constraints>
                             <constraint firstItem="7bP-iQ-bjx" firstAttribute="trailing" secondItem="km9-Cg-O6s" secondAttribute="trailing" id="3A2-1W-md9"/>
+                            <constraint firstItem="U95-T6-Syt" firstAttribute="centerY" secondItem="q04-tK-n8y" secondAttribute="centerY" id="JBf-Fs-FQO"/>
                             <constraint firstItem="7bP-iQ-bjx" firstAttribute="bottom" secondItem="km9-Cg-O6s" secondAttribute="bottom" id="LR0-pA-Nr3"/>
+                            <constraint firstItem="U95-T6-Syt" firstAttribute="centerX" secondItem="q04-tK-n8y" secondAttribute="centerX" id="bol-Q1-CXx"/>
                             <constraint firstItem="q04-tK-n8y" firstAttribute="top" secondItem="Bi3-Tt-whl" secondAttribute="top" id="c34-TP-J1S"/>
                             <constraint firstItem="7bP-iQ-bjx" firstAttribute="leading" secondItem="km9-Cg-O6s" secondAttribute="leading" id="kIP-tw-gMh"/>
                             <constraint firstItem="q04-tK-n8y" firstAttribute="trailing" secondItem="km9-Cg-O6s" secondAttribute="trailing" id="tVT-66-X9M"/>
